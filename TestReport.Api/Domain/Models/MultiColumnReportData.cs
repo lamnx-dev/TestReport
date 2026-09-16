@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 
-namespace TestReport.Controllers
+namespace TestReport.Api.Domain.Models
 {
     public class MultiColumnReportData
     {
@@ -16,3 +16,4 @@ namespace TestReport.Controllers
         public Dictionary<string, string> Values { get; set; } = new();
     }
 }
+

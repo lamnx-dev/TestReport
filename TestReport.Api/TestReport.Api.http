@@ -1,0 +1,14 @@
+@TestReport_HostAddress = http://localhost:5168
+
+### Xem trước báo cáo nhiều cột trực tiếp trên trình duyệt (PDF Inline)
+GET {{TestReport_HostAddress}}/api/report/multi-column-preview?totalColumns=18&columnsPerPage=6&rowCount=50
+
+### Tải file PDF báo cáo nhiều cột (Attachment)
+GET {{TestReport_HostAddress}}/api/report/multi-column-export-pdf?totalColumns=18&columnsPerPage=6&rowCount=50
+
+### Lấy chuỗi Base64 và thông tin trang in cho Frontend Viewer
+GET {{TestReport_HostAddress}}/api/report/multi-column-base64?totalColumns=18&columnsPerPage=6&rowCount=50
+
+### Lấy dữ liệu dạng JSON thô
+GET {{TestReport_HostAddress}}/api/report/multi-column-data?totalColumns=18&columnsPerPage=6&rowCount=50
+

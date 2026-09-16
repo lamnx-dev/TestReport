@@ -1,3 +1,6 @@
+using TestReport.Api.Application;
+using TestReport.Api.Infrastructure;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
@@ -12,8 +15,12 @@ builder.Services.AddCors(options =>
     });
 });
 
-
 builder.Services.AddControllers();
+
+// Clean Architecture Services Registration
+builder.Services.AddApplicationServices();
+builder.Services.AddInfrastructureServices();
+
 // Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
 builder.Services.AddOpenApi();
 
@@ -27,10 +34,9 @@ if (app.Environment.IsDevelopment())
 
 app.UseCors();
 
-// app.UseHttpsRedirection();
-
 app.UseAuthorization();
 
 app.MapControllers();
 
 app.Run();
+

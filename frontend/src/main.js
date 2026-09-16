@@ -2,7 +2,6 @@ import "./style.css";
 
 const API_BASE = "http://localhost:5168/api/report";
 
-let currentReportMode = "multicol"; // 'multicol' hoặc 'weather'
 let currentReportData = null;
 let currentBlobUrl = null;
 
@@ -30,14 +29,11 @@ document.querySelector("#app").innerHTML = `
       </div>
     </div>
 
-    <!-- Center: Mode switcher & Controls -->
+    <!-- Center: Demo Title -->
     <div class="header-center">
       <div class="report-type-switch">
-        <button id="tabMultiCol" class="tab-btn active" title="Báo cáo nhiều cột chia đoạn in">
-          📊 Báo Cáo Nhiều Cột (Tách Trang)
-        </button>
-        <button id="tabWeather" class="tab-btn" title="Báo cáo thời tiết mẫu">
-          ⛅ Báo Cáo Thời Tiết
+        <button class="tab-btn active" title="Báo cáo nhiều cột chia đoạn in">
+          📊 Báo Cáo Nhiều Cột (Tách Trang In)
         </button>
       </div>
     </div>
@@ -112,20 +108,6 @@ document.querySelector("#app").innerHTML = `
           <option value="200">200 dòng</option>
         </select>
       </div>
-
-    </div>
-
-    <!-- Controls cho chế độ thời tiết cũ -->
-    <div id="weatherControls" class="multicol-controls" style="display: none;">
-      <div class="scale-selector-wrap">
-        <span class="selector-label">Quy mô:</span>
-        <select id="selectWeatherRowCount" class="custom-select">
-          <option value="30">1 trang (30 dòng)</option>
-          <option value="90">3 trang (90 dòng)</option>
-          <option value="150" selected>5 trang (150 dòng)</option>
-          <option value="300">10 trang (300 dòng)</option>
-        </select>
-      </div>
     </div>
   </div>
 
@@ -148,7 +130,7 @@ document.querySelector("#app").innerHTML = `
           </div>
           <h2 class="overlay-title">Chưa kết nối được Backend</h2>
           <p id="errorDetails" class="overlay-desc" style="margin: 8px 0 14px;">
-            Vui lòng kiểm tra backend tại terminal:<br><code>dotnet run --project TestReport</code>
+            Vui lòng kiểm tra backend tại terminal:<br><code>dotnet run --project TestReport.Api</code>
           </p>
           <button id="btnRetry" class="btn btn-primary">Thử lại</button>
         </div>
@@ -193,15 +175,10 @@ const metaFileSize = document.querySelector("#metaFileSize");
 const connectionDot = document.querySelector("#connectionDot");
 const toast = document.querySelector("#toast");
 
-const tabMultiCol = document.querySelector("#tabMultiCol");
-const tabWeather = document.querySelector("#tabWeather");
 const subHeaderInfo = document.querySelector("#subHeaderInfo");
-const multicolControls = document.querySelector("#multicolControls");
-const weatherControls = document.querySelector("#weatherControls");
 const selectTotalCols = document.querySelector("#selectTotalCols");
 const selectColsPerPage = document.querySelector("#selectColsPerPage");
 const selectMultiRowCount = document.querySelector("#selectMultiRowCount");
-const selectWeatherRowCount = document.querySelector("#selectWeatherRowCount");
 
 function showToast(msg) {
   toast.textContent = msg;
@@ -221,26 +198,15 @@ function base64ToBlob(base64, contentType = "application/pdf") {
 
 // Tải file PDF trực tiếp về máy vào thư mục Downloads của hệ điều hành
 async function triggerDownload() {
-  const fileName =
-    currentReportMode === "multicol"
-      ? "BaoCao_NhieuCot_TachTrang.pdf"
-      : "BaoCao_Report1.pdf";
-
+  const fileName = "BaoCao_NhieuCot_TachTrang.pdf";
   showToast(`Đang tải file ${fileName}...`);
 
-  let downloadUrl = "";
-  if (currentReportMode === "multicol") {
-    const totalCols = selectTotalCols.value;
-    const colsPerPage = selectColsPerPage.value;
-    const rowCount = selectMultiRowCount.value;
-    downloadUrl = `${API_BASE}/multi-column-export-pdf?totalColumns=${totalCols}&columnsPerPage=${colsPerPage}&rowCount=${rowCount}`;
-  } else {
-    const count = selectWeatherRowCount.value || 150;
-    downloadUrl = `${API_BASE}/export-pdf?count=${count}`;
-  }
+  const totalCols = selectTotalCols.value;
+  const colsPerPage = selectColsPerPage.value;
+  const rowCount = selectMultiRowCount.value;
+  const downloadUrl = `${API_BASE}/multi-column-export-pdf?totalColumns=${totalCols}&columnsPerPage=${colsPerPage}&rowCount=${rowCount}`;
 
   try {
-    // 1. Nếu đã có dữ liệu base64 trong RAM, tạo file tải về ngay lập tức (không cần chờ tải lại mạng)
     if (currentReportData?.base64) {
       const blob = base64ToBlob(currentReportData.base64, "application/pdf");
       const url = window.URL.createObjectURL(blob);
@@ -258,7 +224,6 @@ async function triggerDownload() {
       return;
     }
 
-    // 2. Fetch trực tiếp từ API endpoint
     const response = await fetch(downloadUrl);
     if (!response.ok) throw new Error("HTTP " + response.status);
     const blob = await response.blob();
@@ -277,12 +242,9 @@ async function triggerDownload() {
     showToast(`Đã lưu tệp: ${fileName}`);
   } catch (err) {
     console.error("Lỗi khi tải file:", err);
-    // Fallback: Mở tab tải trực tiếp
     window.location.href = downloadUrl;
   }
 }
-
-
 
 // In báo cáo trực tiếp
 function triggerPrint() {
@@ -299,7 +261,7 @@ function triggerPrint() {
   }
 }
 
-// Hàm tải báo cáo theo chế độ đang chọn
+// Tải báo cáo
 async function loadReport() {
   loadingOverlay.style.display = "flex";
   errorOverlay.style.display = "none";
@@ -310,32 +272,18 @@ async function loadReport() {
   connectionDot.className = "status-dot loading";
 
   try {
-    let url = "";
+    const totalCols = selectTotalCols.value;
+    const colsPerPage = selectColsPerPage.value;
+    const rowCount = selectMultiRowCount.value;
+    const query = `totalColumns=${totalCols}&columnsPerPage=${colsPerPage}&rowCount=${rowCount}`;
 
-    let previewUrl = "";
-    let downloadFileName = "BaoCao_NhieuCot_TachTrang.pdf";
+    const url = `${API_BASE}/multi-column-base64?${query}`;
+    const previewUrl = `${API_BASE}/multi-column-preview?${query}`;
+    const downloadFileName = "BaoCao_NhieuCot_TachTrang.pdf";
 
-    if (currentReportMode === "multicol") {
-      const totalCols = selectTotalCols.value;
-      const colsPerPage = selectColsPerPage.value;
-      const rowCount = selectMultiRowCount.value;
-      const query = `totalColumns=${totalCols}&columnsPerPage=${colsPerPage}&rowCount=${rowCount}`;
+    const totalParts = Math.ceil(totalCols / colsPerPage);
+    subHeaderInfo.innerHTML = `💡 Báo cáo <strong>${totalCols} cột</strong> chia làm <strong>${totalParts} phần in</strong> (${colsPerPage} cột/trang). Mỗi trang đều có <strong>cột STT (tiêu đề trống)</strong> ở đầu đối chiếu dòng.`;
 
-      url = `${API_BASE}/multi-column-base64?${query}`;
-      previewUrl = `${API_BASE}/multi-column-preview?${query}`;
-      downloadFileName = "BaoCao_NhieuCot_TachTrang.pdf";
-
-      const totalParts = Math.ceil(totalCols / colsPerPage);
-      subHeaderInfo.innerHTML = `💡 Báo cáo <strong>${totalCols} cột</strong> chia làm <strong>${totalParts} phần in</strong> (${colsPerPage} cột/trang). Mỗi trang đều có <strong>cột STT (tiêu đề trống)</strong> ở đầu đối chiếu dòng.`;
-    } else {
-      const count = selectWeatherRowCount.value || 150;
-      url = `${API_BASE}/base64?count=${count}`;
-      previewUrl = `${API_BASE}/preview?count=${count}`;
-      downloadFileName = "BaoCao_Report1.pdf";
-      subHeaderInfo.innerHTML = `💡 Báo cáo thời tiết mẫu DevExpress chuẩn khổ dọc Portrait A4 (${count} dòng).`;
-    }
-
-    // Đặt document.title để thanh công cụ của trình duyệt tự nhận tên file có đuôi .pdf
     document.title = downloadFileName;
 
     const res = await fetch(url);
@@ -347,8 +295,6 @@ async function loadReport() {
     currentReportData = data;
     currentReportData.fileName = downloadFileName;
 
-    // Sử dụng trực tiếp previewUrl từ API (có header Content-Disposition chứa tên file chuẩn)
-    // Điều này giúp nút Download bên trong toolbar của iframe tự nhận diện đúng tên file kèm đuôi .pdf!
     pdfFrame.src = previewUrl;
     currentBlobUrl = previewUrl;
 
@@ -358,14 +304,13 @@ async function loadReport() {
     metaFileSize.textContent = `${(data.fileSize / 1024).toFixed(0)} KB`;
     base64Content.textContent = data.base64;
 
-
     btnDownloadPdf.disabled = false;
     btnPrintDirect.disabled = false;
     btnOpenTab.disabled = false;
     connectionDot.className = "status-dot";
   } catch (err) {
     console.error("Error fetching report:", err);
-    errorDetails.innerHTML = `Lỗi: <strong>${err.message}</strong><br><br>Đảm bảo backend đang chạy:<br><code>dotnet run --project TestReport</code>`;
+    errorDetails.innerHTML = `Lỗi: <strong>${err.message}</strong><br><br>Đảm bảo backend đang chạy:<br><code>dotnet run --project TestReport.Api</code>`;
     errorOverlay.style.display = "flex";
     connectionDot.className = "status-dot error";
   } finally {
@@ -374,36 +319,13 @@ async function loadReport() {
   }
 }
 
-// Chuyển tab
-tabMultiCol.addEventListener("click", () => {
-  if (currentReportMode === "multicol") return;
-  currentReportMode = "multicol";
-  tabMultiCol.classList.add("active");
-  tabWeather.classList.remove("active");
-  multicolControls.style.display = "flex";
-  weatherControls.style.display = "none";
-  loadReport();
-});
-
-tabWeather.addEventListener("click", () => {
-  if (currentReportMode === "weather") return;
-  currentReportMode = "weather";
-  tabWeather.classList.add("active");
-  tabMultiCol.classList.remove("active");
-  weatherControls.style.display = "flex";
-  multicolControls.style.display = "none";
-  loadReport();
-});
-
 // Thay đổi cấu hình
 selectTotalCols.addEventListener("change", loadReport);
 selectColsPerPage.addEventListener("change", loadReport);
 selectMultiRowCount.addEventListener("change", loadReport);
-selectWeatherRowCount.addEventListener("change", loadReport);
 
 btnReload.addEventListener("click", loadReport);
 btnRetry.addEventListener("click", loadReport);
-
 btnDownloadPdf.addEventListener("click", triggerDownload);
 btnPrintDirect.addEventListener("click", triggerPrint);
 
