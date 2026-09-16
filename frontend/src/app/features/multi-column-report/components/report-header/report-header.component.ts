@@ -12,7 +12,7 @@ import { ReportStateService } from '../../services/report-state.service';
         <!-- Vị trí Before: Tiêu đề & Thông tin tài liệu -->
         <dxi-item location="before" locateInMenu="never">
           <div class="flex items-center gap-2.5">
-            <span class="dx-theme-accent-as-text font-bold text-sm">DevExpress Report Viewer</span>
+            <span class="text-gray-900 font-bold text-sm">DevExpress Report Viewer</span>
             <span class="text-xs font-semibold text-gray-800">{{
               state.reportResponse()?.fileName || 'BaoCao_NhieuCot_TachTrang.pdf'
             }}</span>

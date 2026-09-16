@@ -135,7 +135,7 @@ namespace TestReport.Api.Infrastructure.Reports
             // lblTitle
             // 
             this.lblTitle.Font = new DevExpress.Drawing.DXFont("Arial", 14F, DevExpress.Drawing.DXFontStyle.Bold);
-            this.lblTitle.ForeColor = System.Drawing.Color.FromArgb(30, 41, 59);
+            this.lblTitle.ForeColor = System.Drawing.Color.Black;
             this.lblTitle.LocationFloat = new DevExpress.Utils.PointFloat(0F, 5F);
             this.lblTitle.Name = "lblTitle";
             this.lblTitle.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
@@ -150,7 +150,7 @@ namespace TestReport.Api.Infrastructure.Reports
             // lblSub
             // 
             this.lblSub.Font = new DevExpress.Drawing.DXFont("Arial", 9.5F, DevExpress.Drawing.DXFontStyle.Italic);
-            this.lblSub.ForeColor = System.Drawing.Color.FromArgb(100, 116, 139);
+            this.lblSub.ForeColor = System.Drawing.Color.Black;
             this.lblSub.LocationFloat = new DevExpress.Utils.PointFloat(0F, 38F);
             this.lblSub.Name = "lblSub";
             this.lblSub.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
@@ -179,36 +179,22 @@ namespace TestReport.Api.Infrastructure.Reports
 
             // GroupHeader1
             this.GroupHeader1.Controls.AddRange(new DevExpress.XtraReports.UI.XRControl[] {
-                this.lblBatch1,
                 this.tblHeader1
             });
             this.GroupHeader1.GroupUnion = DevExpress.XtraReports.UI.GroupUnion.WithFirstDetail;
-            this.GroupHeader1.HeightF = 65F;
+            this.GroupHeader1.HeightF = 32F;
             this.GroupHeader1.Name = "GroupHeader1";
             this.GroupHeader1.RepeatEveryPage = true;
 
-            // lblBatch1
-            this.lblBatch1.Font = new DevExpress.Drawing.DXFont("Arial", 9F, DevExpress.Drawing.DXFontStyle.Bold);
-            this.lblBatch1.ForeColor = System.Drawing.Color.FromArgb(37, 99, 235);
-            this.lblBatch1.LocationFloat = new DevExpress.Utils.PointFloat(0F, 5F);
-            this.lblBatch1.Name = "lblBatch1";
-            this.lblBatch1.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
-            this.lblBatch1.SizeF = new System.Drawing.SizeF(1089F, 20F);
-            this.lblBatch1.StylePriority.UseFont = false;
-            this.lblBatch1.StylePriority.UseForeColor = false;
-            this.lblBatch1.StylePriority.UseTextAlignment = false;
-            this.lblBatch1.Text = "► PHẦN IN 1: Cột 1 ĐẾN Cột 6 (Kèm cột STT đối chiếu)";
-            this.lblBatch1.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleLeft;
-
             // tblHeader1
-            this.tblHeader1.BackColor = System.Drawing.Color.FromArgb(241, 245, 249);
-            this.tblHeader1.BorderColor = System.Drawing.Color.FromArgb(203, 213, 225);
+            this.tblHeader1.BackColor = System.Drawing.Color.White;
+            this.tblHeader1.BorderColor = System.Drawing.Color.Black;
             this.tblHeader1.Borders = ((DevExpress.XtraPrinting.BorderSide)((((DevExpress.XtraPrinting.BorderSide.Left | DevExpress.XtraPrinting.BorderSide.Top) 
             | DevExpress.XtraPrinting.BorderSide.Right) 
             | DevExpress.XtraPrinting.BorderSide.Bottom)));
             this.tblHeader1.BorderWidth = 1F;
             this.tblHeader1.Font = new DevExpress.Drawing.DXFont("Arial", 9F, DevExpress.Drawing.DXFontStyle.Bold);
-            this.tblHeader1.LocationFloat = new DevExpress.Utils.PointFloat(0F, 30F);
+            this.tblHeader1.LocationFloat = new DevExpress.Utils.PointFloat(0F, 0F);
             this.tblHeader1.Name = "tblHeader1";
             this.tblHeader1.Rows.AddRange(new DevExpress.XtraReports.UI.XRTableRow[] { this.rowHeader1 });
             this.tblHeader1.SizeF = new System.Drawing.SizeF(1089F, 32F);
@@ -227,43 +213,43 @@ namespace TestReport.Api.Infrastructure.Reports
             this.rowHeader1.Name = "rowHeader1";
             this.rowHeader1.Weight = 1D;
 
-            this.colH1_Stt.BackColor = System.Drawing.Color.FromArgb(226, 232, 240);
+            this.colH1_Stt.BackColor = System.Drawing.Color.White;
             this.colH1_Stt.Name = "colH1_Stt";
             this.colH1_Stt.StylePriority.UseBackColor = false;
             this.colH1_Stt.Text = "";
             this.colH1_Stt.Weight = 0.380859375D;
 
-            this.colH1_1.ForeColor = System.Drawing.Color.FromArgb(15, 23, 42);
+            this.colH1_1.ForeColor = System.Drawing.Color.Black;
             this.colH1_1.Name = "colH1_1";
             this.colH1_1.StylePriority.UseForeColor = false;
             this.colH1_1.Text = "Cột 1";
             this.colH1_1.Weight = 1D;
 
-            this.colH1_2.ForeColor = System.Drawing.Color.FromArgb(15, 23, 42);
+            this.colH1_2.ForeColor = System.Drawing.Color.Black;
             this.colH1_2.Name = "colH1_2";
             this.colH1_2.StylePriority.UseForeColor = false;
             this.colH1_2.Text = "Cột 2";
             this.colH1_2.Weight = 1D;
 
-            this.colH1_3.ForeColor = System.Drawing.Color.FromArgb(15, 23, 42);
+            this.colH1_3.ForeColor = System.Drawing.Color.Black;
             this.colH1_3.Name = "colH1_3";
             this.colH1_3.StylePriority.UseForeColor = false;
             this.colH1_3.Text = "Cột 3";
             this.colH1_3.Weight = 1D;
 
-            this.colH1_4.ForeColor = System.Drawing.Color.FromArgb(15, 23, 42);
+            this.colH1_4.ForeColor = System.Drawing.Color.Black;
             this.colH1_4.Name = "colH1_4";
             this.colH1_4.StylePriority.UseForeColor = false;
             this.colH1_4.Text = "Cột 4";
             this.colH1_4.Weight = 1D;
 
-            this.colH1_5.ForeColor = System.Drawing.Color.FromArgb(15, 23, 42);
+            this.colH1_5.ForeColor = System.Drawing.Color.Black;
             this.colH1_5.Name = "colH1_5";
             this.colH1_5.StylePriority.UseForeColor = false;
             this.colH1_5.Text = "Cột 5";
             this.colH1_5.Weight = 1D;
 
-            this.colH1_6.ForeColor = System.Drawing.Color.FromArgb(15, 23, 42);
+            this.colH1_6.ForeColor = System.Drawing.Color.Black;
             this.colH1_6.Name = "colH1_6";
             this.colH1_6.StylePriority.UseForeColor = false;
             this.colH1_6.Text = "Cột 6";
@@ -275,7 +261,7 @@ namespace TestReport.Api.Infrastructure.Reports
             this.Detail1.Name = "Detail1";
 
             // tblDetail1
-            this.tblDetail1.BorderColor = System.Drawing.Color.FromArgb(226, 232, 240);
+            this.tblDetail1.BorderColor = System.Drawing.Color.Black;
             this.tblDetail1.Borders = ((DevExpress.XtraPrinting.BorderSide)(((DevExpress.XtraPrinting.BorderSide.Left 
             | DevExpress.XtraPrinting.BorderSide.Right) 
             | DevExpress.XtraPrinting.BorderSide.Bottom)));
@@ -297,12 +283,12 @@ namespace TestReport.Api.Infrastructure.Reports
             this.rowDetail1.Name = "rowDetail1";
             this.rowDetail1.Weight = 1D;
 
-            this.colD1_Stt.BackColor = System.Drawing.Color.FromArgb(248, 250, 252);
+            this.colD1_Stt.BackColor = System.Drawing.Color.White;
             this.colD1_Stt.ExpressionBindings.AddRange(new DevExpress.XtraReports.UI.ExpressionBinding[] {
                 new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "[Stt]")
             });
             this.colD1_Stt.Font = new DevExpress.Drawing.DXFont("Arial", 9F, DevExpress.Drawing.DXFontStyle.Bold);
-            this.colD1_Stt.ForeColor = System.Drawing.Color.FromArgb(71, 85, 105);
+            this.colD1_Stt.ForeColor = System.Drawing.Color.Black;
             this.colD1_Stt.Name = "colD1_Stt";
             this.colD1_Stt.StylePriority.UseBackColor = false;
             this.colD1_Stt.StylePriority.UseFont = false;
@@ -312,7 +298,7 @@ namespace TestReport.Api.Infrastructure.Reports
             this.colD1_Stt.Weight = 0.380859375D;
 
             this.colD1_1.ExpressionBindings.AddRange(new DevExpress.XtraReports.UI.ExpressionBinding[] { new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "[Cột 1]") });
-            this.colD1_1.ForeColor = System.Drawing.Color.FromArgb(30, 41, 59);
+            this.colD1_1.ForeColor = System.Drawing.Color.Black;
             this.colD1_1.Name = "colD1_1";
             this.colD1_1.StylePriority.UseForeColor = false;
             this.colD1_1.StylePriority.UseTextAlignment = false;
@@ -320,7 +306,7 @@ namespace TestReport.Api.Infrastructure.Reports
             this.colD1_1.Weight = 1D;
 
             this.colD1_2.ExpressionBindings.AddRange(new DevExpress.XtraReports.UI.ExpressionBinding[] { new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "[Cột 2]") });
-            this.colD1_2.ForeColor = System.Drawing.Color.FromArgb(30, 41, 59);
+            this.colD1_2.ForeColor = System.Drawing.Color.Black;
             this.colD1_2.Name = "colD1_2";
             this.colD1_2.StylePriority.UseForeColor = false;
             this.colD1_2.StylePriority.UseTextAlignment = false;
@@ -328,7 +314,7 @@ namespace TestReport.Api.Infrastructure.Reports
             this.colD1_2.Weight = 1D;
 
             this.colD1_3.ExpressionBindings.AddRange(new DevExpress.XtraReports.UI.ExpressionBinding[] { new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "[Cột 3]") });
-            this.colD1_3.ForeColor = System.Drawing.Color.FromArgb(30, 41, 59);
+            this.colD1_3.ForeColor = System.Drawing.Color.Black;
             this.colD1_3.Name = "colD1_3";
             this.colD1_3.StylePriority.UseForeColor = false;
             this.colD1_3.StylePriority.UseTextAlignment = false;
@@ -336,7 +322,7 @@ namespace TestReport.Api.Infrastructure.Reports
             this.colD1_3.Weight = 1D;
 
             this.colD1_4.ExpressionBindings.AddRange(new DevExpress.XtraReports.UI.ExpressionBinding[] { new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "[Cột 4]") });
-            this.colD1_4.ForeColor = System.Drawing.Color.FromArgb(30, 41, 59);
+            this.colD1_4.ForeColor = System.Drawing.Color.Black;
             this.colD1_4.Name = "colD1_4";
             this.colD1_4.StylePriority.UseForeColor = false;
             this.colD1_4.StylePriority.UseTextAlignment = false;
@@ -344,7 +330,7 @@ namespace TestReport.Api.Infrastructure.Reports
             this.colD1_4.Weight = 1D;
 
             this.colD1_5.ExpressionBindings.AddRange(new DevExpress.XtraReports.UI.ExpressionBinding[] { new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "[Cột 5]") });
-            this.colD1_5.ForeColor = System.Drawing.Color.FromArgb(30, 41, 59);
+            this.colD1_5.ForeColor = System.Drawing.Color.Black;
             this.colD1_5.Name = "colD1_5";
             this.colD1_5.StylePriority.UseForeColor = false;
             this.colD1_5.StylePriority.UseTextAlignment = false;
@@ -352,7 +338,7 @@ namespace TestReport.Api.Infrastructure.Reports
             this.colD1_5.Weight = 1D;
 
             this.colD1_6.ExpressionBindings.AddRange(new DevExpress.XtraReports.UI.ExpressionBinding[] { new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "[Cột 6]") });
-            this.colD1_6.ForeColor = System.Drawing.Color.FromArgb(30, 41, 59);
+            this.colD1_6.ForeColor = System.Drawing.Color.Black;
             this.colD1_6.Name = "colD1_6";
             this.colD1_6.StylePriority.UseForeColor = false;
             this.colD1_6.StylePriority.UseTextAlignment = false;
@@ -371,36 +357,22 @@ namespace TestReport.Api.Infrastructure.Reports
 
             // GroupHeader2
             this.GroupHeader2.Controls.AddRange(new DevExpress.XtraReports.UI.XRControl[] {
-                this.lblBatch2,
                 this.tblHeader2
             });
             this.GroupHeader2.GroupUnion = DevExpress.XtraReports.UI.GroupUnion.WithFirstDetail;
-            this.GroupHeader2.HeightF = 65F;
+            this.GroupHeader2.HeightF = 32F;
             this.GroupHeader2.Name = "GroupHeader2";
             this.GroupHeader2.RepeatEveryPage = true;
 
-            // lblBatch2
-            this.lblBatch2.Font = new DevExpress.Drawing.DXFont("Arial", 9F, DevExpress.Drawing.DXFontStyle.Bold);
-            this.lblBatch2.ForeColor = System.Drawing.Color.FromArgb(37, 99, 235);
-            this.lblBatch2.LocationFloat = new DevExpress.Utils.PointFloat(0F, 5F);
-            this.lblBatch2.Name = "lblBatch2";
-            this.lblBatch2.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
-            this.lblBatch2.SizeF = new System.Drawing.SizeF(1089F, 20F);
-            this.lblBatch2.StylePriority.UseFont = false;
-            this.lblBatch2.StylePriority.UseForeColor = false;
-            this.lblBatch2.StylePriority.UseTextAlignment = false;
-            this.lblBatch2.Text = "► PHẦN IN 2: Cột 7 ĐẾN Cột 12 (Kèm cột STT đối chiếu)";
-            this.lblBatch2.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleLeft;
-
             // tblHeader2
-            this.tblHeader2.BackColor = System.Drawing.Color.FromArgb(241, 245, 249);
-            this.tblHeader2.BorderColor = System.Drawing.Color.FromArgb(203, 213, 225);
+            this.tblHeader2.BackColor = System.Drawing.Color.White;
+            this.tblHeader2.BorderColor = System.Drawing.Color.Black;
             this.tblHeader2.Borders = ((DevExpress.XtraPrinting.BorderSide)((((DevExpress.XtraPrinting.BorderSide.Left | DevExpress.XtraPrinting.BorderSide.Top) 
             | DevExpress.XtraPrinting.BorderSide.Right) 
             | DevExpress.XtraPrinting.BorderSide.Bottom)));
             this.tblHeader2.BorderWidth = 1F;
             this.tblHeader2.Font = new DevExpress.Drawing.DXFont("Arial", 9F, DevExpress.Drawing.DXFontStyle.Bold);
-            this.tblHeader2.LocationFloat = new DevExpress.Utils.PointFloat(0F, 30F);
+            this.tblHeader2.LocationFloat = new DevExpress.Utils.PointFloat(0F, 0F);
             this.tblHeader2.Name = "tblHeader2";
             this.tblHeader2.Rows.AddRange(new DevExpress.XtraReports.UI.XRTableRow[] { this.rowHeader2 });
             this.tblHeader2.SizeF = new System.Drawing.SizeF(1089F, 32F);
@@ -419,43 +391,43 @@ namespace TestReport.Api.Infrastructure.Reports
             this.rowHeader2.Name = "rowHeader2";
             this.rowHeader2.Weight = 1D;
 
-            this.colH2_Stt.BackColor = System.Drawing.Color.FromArgb(226, 232, 240);
+            this.colH2_Stt.BackColor = System.Drawing.Color.White;
             this.colH2_Stt.Name = "colH2_Stt";
             this.colH2_Stt.StylePriority.UseBackColor = false;
             this.colH2_Stt.Text = "";
             this.colH2_Stt.Weight = 0.380859375D;
 
-            this.colH2_7.ForeColor = System.Drawing.Color.FromArgb(15, 23, 42);
+            this.colH2_7.ForeColor = System.Drawing.Color.Black;
             this.colH2_7.Name = "colH2_7";
             this.colH2_7.StylePriority.UseForeColor = false;
             this.colH2_7.Text = "Cột 7";
             this.colH2_7.Weight = 1D;
 
-            this.colH2_8.ForeColor = System.Drawing.Color.FromArgb(15, 23, 42);
+            this.colH2_8.ForeColor = System.Drawing.Color.Black;
             this.colH2_8.Name = "colH2_8";
             this.colH2_8.StylePriority.UseForeColor = false;
             this.colH2_8.Text = "Cột 8";
             this.colH2_8.Weight = 1D;
 
-            this.colH2_9.ForeColor = System.Drawing.Color.FromArgb(15, 23, 42);
+            this.colH2_9.ForeColor = System.Drawing.Color.Black;
             this.colH2_9.Name = "colH2_9";
             this.colH2_9.StylePriority.UseForeColor = false;
             this.colH2_9.Text = "Cột 9";
             this.colH2_9.Weight = 1D;
 
-            this.colH2_10.ForeColor = System.Drawing.Color.FromArgb(15, 23, 42);
+            this.colH2_10.ForeColor = System.Drawing.Color.Black;
             this.colH2_10.Name = "colH2_10";
             this.colH2_10.StylePriority.UseForeColor = false;
             this.colH2_10.Text = "Cột 10";
             this.colH2_10.Weight = 1D;
 
-            this.colH2_11.ForeColor = System.Drawing.Color.FromArgb(15, 23, 42);
+            this.colH2_11.ForeColor = System.Drawing.Color.Black;
             this.colH2_11.Name = "colH2_11";
             this.colH2_11.StylePriority.UseForeColor = false;
             this.colH2_11.Text = "Cột 11";
             this.colH2_11.Weight = 1D;
 
-            this.colH2_12.ForeColor = System.Drawing.Color.FromArgb(15, 23, 42);
+            this.colH2_12.ForeColor = System.Drawing.Color.Black;
             this.colH2_12.Name = "colH2_12";
             this.colH2_12.StylePriority.UseForeColor = false;
             this.colH2_12.Text = "Cột 12";
@@ -467,7 +439,7 @@ namespace TestReport.Api.Infrastructure.Reports
             this.Detail2.Name = "Detail2";
 
             // tblDetail2
-            this.tblDetail2.BorderColor = System.Drawing.Color.FromArgb(226, 232, 240);
+            this.tblDetail2.BorderColor = System.Drawing.Color.Black;
             this.tblDetail2.Borders = ((DevExpress.XtraPrinting.BorderSide)(((DevExpress.XtraPrinting.BorderSide.Left 
             | DevExpress.XtraPrinting.BorderSide.Right) 
             | DevExpress.XtraPrinting.BorderSide.Bottom)));
@@ -489,12 +461,12 @@ namespace TestReport.Api.Infrastructure.Reports
             this.rowDetail2.Name = "rowDetail2";
             this.rowDetail2.Weight = 1D;
 
-            this.colD2_Stt.BackColor = System.Drawing.Color.FromArgb(248, 250, 252);
+            this.colD2_Stt.BackColor = System.Drawing.Color.White;
             this.colD2_Stt.ExpressionBindings.AddRange(new DevExpress.XtraReports.UI.ExpressionBinding[] {
                 new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "[Stt]")
             });
             this.colD2_Stt.Font = new DevExpress.Drawing.DXFont("Arial", 9F, DevExpress.Drawing.DXFontStyle.Bold);
-            this.colD2_Stt.ForeColor = System.Drawing.Color.FromArgb(71, 85, 105);
+            this.colD2_Stt.ForeColor = System.Drawing.Color.Black;
             this.colD2_Stt.Name = "colD2_Stt";
             this.colD2_Stt.StylePriority.UseBackColor = false;
             this.colD2_Stt.StylePriority.UseFont = false;
@@ -504,7 +476,7 @@ namespace TestReport.Api.Infrastructure.Reports
             this.colD2_Stt.Weight = 0.380859375D;
 
             this.colD2_7.ExpressionBindings.AddRange(new DevExpress.XtraReports.UI.ExpressionBinding[] { new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "[Cột 7]") });
-            this.colD2_7.ForeColor = System.Drawing.Color.FromArgb(30, 41, 59);
+            this.colD2_7.ForeColor = System.Drawing.Color.Black;
             this.colD2_7.Name = "colD2_7";
             this.colD2_7.StylePriority.UseForeColor = false;
             this.colD2_7.StylePriority.UseTextAlignment = false;
@@ -512,7 +484,7 @@ namespace TestReport.Api.Infrastructure.Reports
             this.colD2_7.Weight = 1D;
 
             this.colD2_8.ExpressionBindings.AddRange(new DevExpress.XtraReports.UI.ExpressionBinding[] { new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "[Cột 8]") });
-            this.colD2_8.ForeColor = System.Drawing.Color.FromArgb(30, 41, 59);
+            this.colD2_8.ForeColor = System.Drawing.Color.Black;
             this.colD2_8.Name = "colD2_8";
             this.colD2_8.StylePriority.UseForeColor = false;
             this.colD2_8.StylePriority.UseTextAlignment = false;
@@ -520,7 +492,7 @@ namespace TestReport.Api.Infrastructure.Reports
             this.colD2_8.Weight = 1D;
 
             this.colD2_9.ExpressionBindings.AddRange(new DevExpress.XtraReports.UI.ExpressionBinding[] { new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "[Cột 9]") });
-            this.colD2_9.ForeColor = System.Drawing.Color.FromArgb(30, 41, 59);
+            this.colD2_9.ForeColor = System.Drawing.Color.Black;
             this.colD2_9.Name = "colD2_9";
             this.colD2_9.StylePriority.UseForeColor = false;
             this.colD2_9.StylePriority.UseTextAlignment = false;
@@ -528,7 +500,7 @@ namespace TestReport.Api.Infrastructure.Reports
             this.colD2_9.Weight = 1D;
 
             this.colD2_10.ExpressionBindings.AddRange(new DevExpress.XtraReports.UI.ExpressionBinding[] { new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "[Cột 10]") });
-            this.colD2_10.ForeColor = System.Drawing.Color.FromArgb(30, 41, 59);
+            this.colD2_10.ForeColor = System.Drawing.Color.Black;
             this.colD2_10.Name = "colD2_10";
             this.colD2_10.StylePriority.UseForeColor = false;
             this.colD2_10.StylePriority.UseTextAlignment = false;
@@ -536,7 +508,7 @@ namespace TestReport.Api.Infrastructure.Reports
             this.colD2_10.Weight = 1D;
 
             this.colD2_11.ExpressionBindings.AddRange(new DevExpress.XtraReports.UI.ExpressionBinding[] { new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "[Cột 11]") });
-            this.colD2_11.ForeColor = System.Drawing.Color.FromArgb(30, 41, 59);
+            this.colD2_11.ForeColor = System.Drawing.Color.Black;
             this.colD2_11.Name = "colD2_11";
             this.colD2_11.StylePriority.UseForeColor = false;
             this.colD2_11.StylePriority.UseTextAlignment = false;
@@ -544,7 +516,7 @@ namespace TestReport.Api.Infrastructure.Reports
             this.colD2_11.Weight = 1D;
 
             this.colD2_12.ExpressionBindings.AddRange(new DevExpress.XtraReports.UI.ExpressionBinding[] { new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "[Cột 12]") });
-            this.colD2_12.ForeColor = System.Drawing.Color.FromArgb(30, 41, 59);
+            this.colD2_12.ForeColor = System.Drawing.Color.Black;
             this.colD2_12.Name = "colD2_12";
             this.colD2_12.StylePriority.UseForeColor = false;
             this.colD2_12.StylePriority.UseTextAlignment = false;
@@ -563,36 +535,22 @@ namespace TestReport.Api.Infrastructure.Reports
 
             // GroupHeader3
             this.GroupHeader3.Controls.AddRange(new DevExpress.XtraReports.UI.XRControl[] {
-                this.lblBatch3,
                 this.tblHeader3
             });
             this.GroupHeader3.GroupUnion = DevExpress.XtraReports.UI.GroupUnion.WithFirstDetail;
-            this.GroupHeader3.HeightF = 65F;
+            this.GroupHeader3.HeightF = 32F;
             this.GroupHeader3.Name = "GroupHeader3";
             this.GroupHeader3.RepeatEveryPage = true;
 
-            // lblBatch3
-            this.lblBatch3.Font = new DevExpress.Drawing.DXFont("Arial", 9F, DevExpress.Drawing.DXFontStyle.Bold);
-            this.lblBatch3.ForeColor = System.Drawing.Color.FromArgb(37, 99, 235);
-            this.lblBatch3.LocationFloat = new DevExpress.Utils.PointFloat(0F, 5F);
-            this.lblBatch3.Name = "lblBatch3";
-            this.lblBatch3.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
-            this.lblBatch3.SizeF = new System.Drawing.SizeF(1089F, 20F);
-            this.lblBatch3.StylePriority.UseFont = false;
-            this.lblBatch3.StylePriority.UseForeColor = false;
-            this.lblBatch3.StylePriority.UseTextAlignment = false;
-            this.lblBatch3.Text = "► PHẦN IN 3: Cột 13 ĐẾN Cột 18 (Kèm cột STT đối chiếu)";
-            this.lblBatch3.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleLeft;
-
             // tblHeader3
-            this.tblHeader3.BackColor = System.Drawing.Color.FromArgb(241, 245, 249);
-            this.tblHeader3.BorderColor = System.Drawing.Color.FromArgb(203, 213, 225);
+            this.tblHeader3.BackColor = System.Drawing.Color.White;
+            this.tblHeader3.BorderColor = System.Drawing.Color.Black;
             this.tblHeader3.Borders = ((DevExpress.XtraPrinting.BorderSide)((((DevExpress.XtraPrinting.BorderSide.Left | DevExpress.XtraPrinting.BorderSide.Top) 
             | DevExpress.XtraPrinting.BorderSide.Right) 
             | DevExpress.XtraPrinting.BorderSide.Bottom)));
             this.tblHeader3.BorderWidth = 1F;
             this.tblHeader3.Font = new DevExpress.Drawing.DXFont("Arial", 9F, DevExpress.Drawing.DXFontStyle.Bold);
-            this.tblHeader3.LocationFloat = new DevExpress.Utils.PointFloat(0F, 30F);
+            this.tblHeader3.LocationFloat = new DevExpress.Utils.PointFloat(0F, 0F);
             this.tblHeader3.Name = "tblHeader3";
             this.tblHeader3.Rows.AddRange(new DevExpress.XtraReports.UI.XRTableRow[] { this.rowHeader3 });
             this.tblHeader3.SizeF = new System.Drawing.SizeF(1089F, 32F);
@@ -611,43 +569,43 @@ namespace TestReport.Api.Infrastructure.Reports
             this.rowHeader3.Name = "rowHeader3";
             this.rowHeader3.Weight = 1D;
 
-            this.colH3_Stt.BackColor = System.Drawing.Color.FromArgb(226, 232, 240);
+            this.colH3_Stt.BackColor = System.Drawing.Color.White;
             this.colH3_Stt.Name = "colH3_Stt";
             this.colH3_Stt.StylePriority.UseBackColor = false;
             this.colH3_Stt.Text = "";
             this.colH3_Stt.Weight = 0.380859375D;
 
-            this.colH3_13.ForeColor = System.Drawing.Color.FromArgb(15, 23, 42);
+            this.colH3_13.ForeColor = System.Drawing.Color.Black;
             this.colH3_13.Name = "colH3_13";
             this.colH3_13.StylePriority.UseForeColor = false;
             this.colH3_13.Text = "Cột 13";
             this.colH3_13.Weight = 1D;
 
-            this.colH3_14.ForeColor = System.Drawing.Color.FromArgb(15, 23, 42);
+            this.colH3_14.ForeColor = System.Drawing.Color.Black;
             this.colH3_14.Name = "colH3_14";
             this.colH3_14.StylePriority.UseForeColor = false;
             this.colH3_14.Text = "Cột 14";
             this.colH3_14.Weight = 1D;
 
-            this.colH3_15.ForeColor = System.Drawing.Color.FromArgb(15, 23, 42);
+            this.colH3_15.ForeColor = System.Drawing.Color.Black;
             this.colH3_15.Name = "colH3_15";
             this.colH3_15.StylePriority.UseForeColor = false;
             this.colH3_15.Text = "Cột 15";
             this.colH3_15.Weight = 1D;
 
-            this.colH3_16.ForeColor = System.Drawing.Color.FromArgb(15, 23, 42);
+            this.colH3_16.ForeColor = System.Drawing.Color.Black;
             this.colH3_16.Name = "colH3_16";
             this.colH3_16.StylePriority.UseForeColor = false;
             this.colH3_16.Text = "Cột 16";
             this.colH3_16.Weight = 1D;
 
-            this.colH3_17.ForeColor = System.Drawing.Color.FromArgb(15, 23, 42);
+            this.colH3_17.ForeColor = System.Drawing.Color.Black;
             this.colH3_17.Name = "colH3_17";
             this.colH3_17.StylePriority.UseForeColor = false;
             this.colH3_17.Text = "Cột 17";
             this.colH3_17.Weight = 1D;
 
-            this.colH3_18.ForeColor = System.Drawing.Color.FromArgb(15, 23, 42);
+            this.colH3_18.ForeColor = System.Drawing.Color.Black;
             this.colH3_18.Name = "colH3_18";
             this.colH3_18.StylePriority.UseForeColor = false;
             this.colH3_18.Text = "Cột 18";
@@ -659,7 +617,7 @@ namespace TestReport.Api.Infrastructure.Reports
             this.Detail3.Name = "Detail3";
 
             // tblDetail3
-            this.tblDetail3.BorderColor = System.Drawing.Color.FromArgb(226, 232, 240);
+            this.tblDetail3.BorderColor = System.Drawing.Color.Black;
             this.tblDetail3.Borders = ((DevExpress.XtraPrinting.BorderSide)(((DevExpress.XtraPrinting.BorderSide.Left 
             | DevExpress.XtraPrinting.BorderSide.Right) 
             | DevExpress.XtraPrinting.BorderSide.Bottom)));
@@ -681,12 +639,12 @@ namespace TestReport.Api.Infrastructure.Reports
             this.rowDetail3.Name = "rowDetail3";
             this.rowDetail3.Weight = 1D;
 
-            this.colD3_Stt.BackColor = System.Drawing.Color.FromArgb(248, 250, 252);
+            this.colD3_Stt.BackColor = System.Drawing.Color.White;
             this.colD3_Stt.ExpressionBindings.AddRange(new DevExpress.XtraReports.UI.ExpressionBinding[] {
                 new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "[Stt]")
             });
             this.colD3_Stt.Font = new DevExpress.Drawing.DXFont("Arial", 9F, DevExpress.Drawing.DXFontStyle.Bold);
-            this.colD3_Stt.ForeColor = System.Drawing.Color.FromArgb(71, 85, 105);
+            this.colD3_Stt.ForeColor = System.Drawing.Color.Black;
             this.colD3_Stt.Name = "colD3_Stt";
             this.colD3_Stt.StylePriority.UseBackColor = false;
             this.colD3_Stt.StylePriority.UseFont = false;
@@ -696,7 +654,7 @@ namespace TestReport.Api.Infrastructure.Reports
             this.colD3_Stt.Weight = 0.380859375D;
 
             this.colD3_13.ExpressionBindings.AddRange(new DevExpress.XtraReports.UI.ExpressionBinding[] { new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "[Cột 13]") });
-            this.colD3_13.ForeColor = System.Drawing.Color.FromArgb(30, 41, 59);
+            this.colD3_13.ForeColor = System.Drawing.Color.Black;
             this.colD3_13.Name = "colD3_13";
             this.colD3_13.StylePriority.UseForeColor = false;
             this.colD3_13.StylePriority.UseTextAlignment = false;
@@ -704,7 +662,7 @@ namespace TestReport.Api.Infrastructure.Reports
             this.colD3_13.Weight = 1D;
 
             this.colD3_14.ExpressionBindings.AddRange(new DevExpress.XtraReports.UI.ExpressionBinding[] { new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "[Cột 14]") });
-            this.colD3_14.ForeColor = System.Drawing.Color.FromArgb(30, 41, 59);
+            this.colD3_14.ForeColor = System.Drawing.Color.Black;
             this.colD3_14.Name = "colD3_14";
             this.colD3_14.StylePriority.UseForeColor = false;
             this.colD3_14.StylePriority.UseTextAlignment = false;
@@ -712,7 +670,7 @@ namespace TestReport.Api.Infrastructure.Reports
             this.colD3_14.Weight = 1D;
 
             this.colD3_15.ExpressionBindings.AddRange(new DevExpress.XtraReports.UI.ExpressionBinding[] { new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "[Cột 15]") });
-            this.colD3_15.ForeColor = System.Drawing.Color.FromArgb(30, 41, 59);
+            this.colD3_15.ForeColor = System.Drawing.Color.Black;
             this.colD3_15.Name = "colD3_15";
             this.colD3_15.StylePriority.UseForeColor = false;
             this.colD3_15.StylePriority.UseTextAlignment = false;
@@ -720,7 +678,7 @@ namespace TestReport.Api.Infrastructure.Reports
             this.colD3_15.Weight = 1D;
 
             this.colD3_16.ExpressionBindings.AddRange(new DevExpress.XtraReports.UI.ExpressionBinding[] { new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "[Cột 16]") });
-            this.colD3_16.ForeColor = System.Drawing.Color.FromArgb(30, 41, 59);
+            this.colD3_16.ForeColor = System.Drawing.Color.Black;
             this.colD3_16.Name = "colD3_16";
             this.colD3_16.StylePriority.UseForeColor = false;
             this.colD3_16.StylePriority.UseTextAlignment = false;
@@ -728,7 +686,7 @@ namespace TestReport.Api.Infrastructure.Reports
             this.colD3_16.Weight = 1D;
 
             this.colD3_17.ExpressionBindings.AddRange(new DevExpress.XtraReports.UI.ExpressionBinding[] { new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "[Cột 17]") });
-            this.colD3_17.ForeColor = System.Drawing.Color.FromArgb(30, 41, 59);
+            this.colD3_17.ForeColor = System.Drawing.Color.Black;
             this.colD3_17.Name = "colD3_17";
             this.colD3_17.StylePriority.UseForeColor = false;
             this.colD3_17.StylePriority.UseTextAlignment = false;
@@ -736,7 +694,7 @@ namespace TestReport.Api.Infrastructure.Reports
             this.colD3_17.Weight = 1D;
 
             this.colD3_18.ExpressionBindings.AddRange(new DevExpress.XtraReports.UI.ExpressionBinding[] { new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "[Cột 18]") });
-            this.colD3_18.ForeColor = System.Drawing.Color.FromArgb(30, 41, 59);
+            this.colD3_18.ForeColor = System.Drawing.Color.Black;
             this.colD3_18.Name = "colD3_18";
             this.colD3_18.StylePriority.UseForeColor = false;
             this.colD3_18.StylePriority.UseTextAlignment = false;
@@ -755,7 +713,7 @@ namespace TestReport.Api.Infrastructure.Reports
 
             // pageInfoTime
             this.pageInfoTime.Font = new DevExpress.Drawing.DXFont("Arial", 8.5F, DevExpress.Drawing.DXFontStyle.Italic);
-            this.pageInfoTime.ForeColor = System.Drawing.Color.FromArgb(148, 163, 184);
+            this.pageInfoTime.ForeColor = System.Drawing.Color.Black;
             this.pageInfoTime.LocationFloat = new DevExpress.Utils.PointFloat(0F, 10F);
             this.pageInfoTime.Name = "pageInfoTime";
             this.pageInfoTime.PageInfo = DevExpress.XtraPrinting.PageInfo.DateTime;
@@ -766,7 +724,7 @@ namespace TestReport.Api.Infrastructure.Reports
 
             // pageInfoNumber
             this.pageInfoNumber.Font = new DevExpress.Drawing.DXFont("Arial", 8.5F, DevExpress.Drawing.DXFontStyle.Bold);
-            this.pageInfoNumber.ForeColor = System.Drawing.Color.FromArgb(100, 116, 139);
+            this.pageInfoNumber.ForeColor = System.Drawing.Color.Black;
             this.pageInfoNumber.LocationFloat = new DevExpress.Utils.PointFloat(689F, 10F);
             this.pageInfoNumber.Name = "pageInfoNumber";
             this.pageInfoNumber.PageInfo = DevExpress.XtraPrinting.PageInfo.NumberOfTotal;

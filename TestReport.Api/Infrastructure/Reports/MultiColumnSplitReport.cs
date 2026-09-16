@@ -132,33 +132,22 @@ namespace TestReport.Api.Infrastructure.Reports
 
                 var groupHeader = new GroupHeaderBand
                 {
-                    HeightF = 65F,
+                    HeightF = 32F,
                     RepeatEveryPage = true,
                     GroupUnion = GroupUnion.WithFirstDetail
                 };
-
-                var lblBatchInfo = new XRLabel
-                {
-                    Text = $"► PHẦN IN {batchIdx + 1}: {batch[0]} ĐẾN {batch[^1]} (Kèm cột STT đối chiếu)",
-                    Font = new DXFont("Arial", 9F, DXFontStyle.Bold),
-                    ForeColor = Color.FromArgb(37, 99, 235),
-                    LocationFloat = new DevExpress.Utils.PointFloat(0F, 5F),
-                    SizeF = new SizeF(printableWidth, 20F),
-                    TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleLeft
-                };
-                groupHeader.Controls.Add(lblBatchInfo);
 
                 float remainWidth = printableWidth - sttWidth;
                 float dataColWidth = remainWidth / batch.Count;
 
                 var tblHeader = new XRTable
                 {
-                    LocationFloat = new DevExpress.Utils.PointFloat(0F, 30F),
+                    LocationFloat = new DevExpress.Utils.PointFloat(0F, 0F),
                     SizeF = new SizeF(printableWidth, 32F),
                     Borders = DevExpress.XtraPrinting.BorderSide.All,
-                    BorderColor = Color.FromArgb(203, 213, 225),
+                    BorderColor = Color.Black,
                     BorderWidth = 1F,
-                    BackColor = Color.FromArgb(241, 245, 249),
+                    BackColor = Color.White,
                     Font = new DXFont("Arial", 9F, DXFontStyle.Bold),
                     TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter
                 };
@@ -168,7 +157,7 @@ namespace TestReport.Api.Infrastructure.Reports
                 {
                     Text = string.Empty,
                     WidthF = sttWidth,
-                    BackColor = Color.FromArgb(226, 232, 240)
+                    BackColor = Color.White
                 };
                 rowHeader.Cells.Add(cellSttHeader);
 
@@ -178,7 +167,7 @@ namespace TestReport.Api.Infrastructure.Reports
                     {
                         Text = colName,
                         WidthF = dataColWidth,
-                        ForeColor = Color.FromArgb(15, 23, 42)
+                        ForeColor = Color.Black
                     };
                     rowHeader.Cells.Add(cellCol);
                 }
@@ -197,7 +186,7 @@ namespace TestReport.Api.Infrastructure.Reports
                     LocationFloat = new DevExpress.Utils.PointFloat(0F, 0F),
                     SizeF = new SizeF(printableWidth, 26F),
                     Borders = DevExpress.XtraPrinting.BorderSide.Left | DevExpress.XtraPrinting.BorderSide.Right | DevExpress.XtraPrinting.BorderSide.Bottom,
-                    BorderColor = Color.FromArgb(226, 232, 240),
+                    BorderColor = Color.Black,
                     BorderWidth = 1F,
                     Font = new DXFont("Arial", 9F, DXFontStyle.Regular)
                 };
@@ -208,8 +197,8 @@ namespace TestReport.Api.Infrastructure.Reports
                     WidthF = sttWidth,
                     TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter,
                     Font = new DXFont("Arial", 9F, DXFontStyle.Bold),
-                    ForeColor = Color.FromArgb(71, 85, 105),
-                    BackColor = Color.FromArgb(248, 250, 252)
+                    ForeColor = Color.Black,
+                    BackColor = Color.White
                 };
                 cellSttDetail.ExpressionBindings.Add(new ExpressionBinding("BeforePrint", "Text", "[Stt]"));
                 rowDetail.Cells.Add(cellSttDetail);
@@ -220,7 +209,7 @@ namespace TestReport.Api.Infrastructure.Reports
                     {
                         WidthF = dataColWidth,
                         TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter,
-                        ForeColor = Color.FromArgb(30, 41, 59)
+                        ForeColor = Color.Black
                     };
                     cellData.ExpressionBindings.Add(new ExpressionBinding("BeforePrint", "Text", $"[{colName}]"));
                     rowDetail.Cells.Add(cellData);
