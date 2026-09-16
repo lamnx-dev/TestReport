@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="vi">
+<head>
+  <meta charset="utf-8">
+  <title>DevExpress Report Viewer - Báo Cáo Nhiều Cột Tách Trang</title>
+  <base href="/">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    dx-license, [data-permanent], dx-license-trigger {
+      max-height: 0 !important;
+      height: 0 !important;
+      padding: 0 !important;
+      margin: 0 !important;
+      font-size: 0 !important;
+      line-height: 0 !important;
+      overflow: hidden !important;
+      border: none !important;
+      visibility: hidden !important;
+      opacity: 0 !important;
+      position: absolute !important;
+      top: -99999px !important;
+    }
+    dx-license * {
+      display: none !important;
+      visibility: hidden !important;
+      height: 0 !important;
+    }
+  </style>
+  <script>
+    const licenseObserver = new MutationObserver(() => {
+      const el = document.querySelector('dx-license');
+      if (el) {
+        const btn = el.querySelector('svg')?.parentElement;
+        if (btn && typeof btn.onclick === 'function') {
+          btn.onclick();
+        }
+        el.remove();
+      }
+    });
+    licenseObserver.observe(document.documentElement, { childList: true, subtree: true });
+  </script>
+</head>
+<body class="dx-viewport h-full w-full m-0 p-0 overflow-hidden">
+  <app-root class="block h-full w-full"></app-root>
+</body>
+</html>
