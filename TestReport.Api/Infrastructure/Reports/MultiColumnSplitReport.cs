@@ -1,9 +1,6 @@
 using System;
 using System.Collections.Generic;
 using System.Data;
-using System.Drawing;
-using DevExpress.Drawing;
-using DevExpress.Drawing.Printing;
 using DevExpress.XtraReports.UI;
 using TestReport.Api.Domain.Models;
 
@@ -25,32 +22,22 @@ namespace TestReport.Api.Infrastructure.Reports
         {
             if (reportData == null) return;
 
-            // Cập nhật phụ đề với số liệu thực tế
-            lblSub.Text = $"Tổng số cột: {reportData.TotalColumns} | Số cột/trang in: {reportData.ColumnsPerPage} | Cột STT cố định đầu dòng (tiêu đề trống)";
-
-            // Nếu cấu hình dữ liệu khớp với thiết kế 18 cột (6 cột/trang) trên Designer:
-            // Sử dụng trực tiếp 3 DetailReportBand đã thiết kế trên Visual Studio Designer!
-            if (reportData.TotalColumns == 18 && reportData.ColumnsPerPage == 6 &&
-                reportData.ColumnNames.Count == 18 &&
-                this.DetailReport1 != null && this.DetailReport2 != null && this.DetailReport3 != null)
+            // Cập nhật phụ đề báo cáo
+            if (lblSub != null)
             {
-                BindStaticBatches(reportData);
+                lblSub.Text = $"Tổng số cột: {reportData.TotalColumns} | Số cột/trang in: {reportData.ColumnsPerPage} | Cột STT cố định đầu dòng";
             }
-            else
-            {
-                // Cấu hình cột tùy biến: gỡ bỏ các DetailReport tĩnh và sinh batch động
-                this.Bands.Remove(this.DetailReport1);
-                this.Bands.Remove(this.DetailReport2);
-                this.Bands.Remove(this.DetailReport3);
 
-                BuildDynamicBatches(reportData);
-            }
+            // Gán dữ liệu trực tiếp vào các DetailReportBand đã thiết kế sẵn trên DevExpress Designer
+            // Không xóa band hay can thiệp giao diện bằng code C#
+            BindDesignerBatches(reportData);
         }
 
         /// <summary>
-        /// Gán dữ liệu trực tiếp vào 3 DetailReportBand đã vẽ sẵn trên file Designer
+        /// Gán dữ liệu vào các Band đã vẽ trên DevExpress Designer.
+        /// Toàn bộ định dạng (Font, màu sắc, border, độ rộng, vị trí) đều do DevExpress Designer quản lý.
         /// </summary>
-        private void BindStaticBatches(MultiColumnReportData reportData)
+        private void BindDesignerBatches(MultiColumnReportData reportData)
         {
             var reports = new[] { this.DetailReport1, this.DetailReport2, this.DetailReport3 };
             var batchColumns = new[]
@@ -60,8 +47,10 @@ namespace TestReport.Api.Infrastructure.Reports
                 new[] { "Cột 13", "Cột 14", "Cột 15", "Cột 16", "Cột 17", "Cột 18" }
             };
 
-            for (int b = 0; b < 3; b++)
+            for (int b = 0; b < reports.Length; b++)
             {
+                if (reports[b] == null) continue;
+
                 var dt = new DataTable($"Batch_{b + 1}");
                 dt.Columns.Add("Stt", typeof(int));
                 foreach (var col in batchColumns[b])
@@ -82,144 +71,6 @@ namespace TestReport.Api.Infrastructure.Reports
 
                 reports[b].DataSource = dt;
                 reports[b].DataMember = dt.TableName;
-            }
-        }
-
-        /// <summary>
-        /// Sinh các DetailReportBand linh hoạt cho bất kỳ số lượng cột nào
-        /// </summary>
-        private void BuildDynamicBatches(MultiColumnReportData reportData)
-        {
-            var columnBatches = new List<List<string>>();
-            for (int i = 0; i < reportData.ColumnNames.Count; i += reportData.ColumnsPerPage)
-            {
-                int count = Math.Min(reportData.ColumnsPerPage, reportData.ColumnNames.Count - i);
-                columnBatches.Add(reportData.ColumnNames.GetRange(i, count));
-            }
-
-            int printableWidth = 1169 - 80; // 1089px
-            float sttWidth = 65F; // Chiều rộng cột STT
-
-            for (int batchIdx = 0; batchIdx < columnBatches.Count; batchIdx++)
-            {
-                var batch = columnBatches[batchIdx];
-                bool isLastBatch = (batchIdx == columnBatches.Count - 1);
-
-                var dt = new DataTable($"DynamicBatch_{batchIdx + 1}");
-                dt.Columns.Add("Stt", typeof(int));
-                foreach (var colName in batch)
-                {
-                    dt.Columns.Add(colName, typeof(string));
-                }
-
-                foreach (var r in reportData.Rows)
-                {
-                    var dr = dt.NewRow();
-                    dr["Stt"] = r.Stt;
-                    foreach (var colName in batch)
-                    {
-                        dr[colName] = r.Values.TryGetValue(colName, out var val) ? val : string.Empty;
-                    }
-                    dt.Rows.Add(dr);
-                }
-
-                var detailReport = new DetailReportBand
-                {
-                    DataSource = dt,
-                    DataMember = dt.TableName,
-                    PageBreak = isLastBatch ? PageBreak.None : PageBreak.AfterBand
-                };
-
-                var groupHeader = new GroupHeaderBand
-                {
-                    HeightF = 32F,
-                    RepeatEveryPage = true,
-                    GroupUnion = GroupUnion.WithFirstDetail
-                };
-
-                float remainWidth = printableWidth - sttWidth;
-                float dataColWidth = remainWidth / batch.Count;
-
-                var tblHeader = new XRTable
-                {
-                    LocationFloat = new DevExpress.Utils.PointFloat(0F, 0F),
-                    SizeF = new SizeF(printableWidth, 32F),
-                    Borders = DevExpress.XtraPrinting.BorderSide.All,
-                    BorderColor = Color.Black,
-                    BorderWidth = 1F,
-                    BackColor = Color.White,
-                    Font = new DXFont("Arial", 9F, DXFontStyle.Bold),
-                    TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter
-                };
-
-                var rowHeader = new XRTableRow { HeightF = 32F };
-                var cellSttHeader = new XRTableCell
-                {
-                    Text = string.Empty,
-                    WidthF = sttWidth,
-                    BackColor = Color.White
-                };
-                rowHeader.Cells.Add(cellSttHeader);
-
-                foreach (var colName in batch)
-                {
-                    var cellCol = new XRTableCell
-                    {
-                        Text = colName,
-                        WidthF = dataColWidth,
-                        ForeColor = Color.Black
-                    };
-                    rowHeader.Cells.Add(cellCol);
-                }
-
-                tblHeader.Rows.Add(rowHeader);
-                groupHeader.Controls.Add(tblHeader);
-                detailReport.Bands.Add(groupHeader);
-
-                var detailBand = new DetailBand
-                {
-                    HeightF = 26F
-                };
-
-                var tblDetail = new XRTable
-                {
-                    LocationFloat = new DevExpress.Utils.PointFloat(0F, 0F),
-                    SizeF = new SizeF(printableWidth, 26F),
-                    Borders = DevExpress.XtraPrinting.BorderSide.Left | DevExpress.XtraPrinting.BorderSide.Right | DevExpress.XtraPrinting.BorderSide.Bottom,
-                    BorderColor = Color.Black,
-                    BorderWidth = 1F,
-                    Font = new DXFont("Arial", 9F, DXFontStyle.Regular)
-                };
-
-                var rowDetail = new XRTableRow { HeightF = 26F };
-                var cellSttDetail = new XRTableCell
-                {
-                    WidthF = sttWidth,
-                    TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter,
-                    Font = new DXFont("Arial", 9F, DXFontStyle.Bold),
-                    ForeColor = Color.Black,
-                    BackColor = Color.White
-                };
-                cellSttDetail.ExpressionBindings.Add(new ExpressionBinding("BeforePrint", "Text", "[Stt]"));
-                rowDetail.Cells.Add(cellSttDetail);
-
-                foreach (var colName in batch)
-                {
-                    var cellData = new XRTableCell
-                    {
-                        WidthF = dataColWidth,
-                        TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter,
-                        ForeColor = Color.Black
-                    };
-                    cellData.ExpressionBindings.Add(new ExpressionBinding("BeforePrint", "Text", $"[{colName}]"));
-                    rowDetail.Cells.Add(cellData);
-                }
-
-                tblDetail.Rows.Add(rowDetail);
-                detailBand.Controls.Add(tblDetail);
-                detailReport.Bands.Add(detailBand);
-
-                this.Bands.Add(detailReport);
             }
         }
     }

@@ -21,6 +21,15 @@
     <EmbeddedResource Update="Infrastructure\Reports\MultiColumnSplitReport.resx">
       <DependentUpon>MultiColumnSplitReport.cs</DependentUpon>
     </EmbeddedResource>
+    <Compile Update="Infrastructure\Reports\Report1.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Update="Infrastructure\Reports\Report1.Designer.cs">
+      <DependentUpon>Report1.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Update="Infrastructure\Reports\Report1.resx">
+      <DependentUpon>Report1.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
 
 </Project>
