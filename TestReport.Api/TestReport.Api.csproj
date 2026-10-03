@@ -30,6 +30,15 @@
     <EmbeddedResource Update="Infrastructure\Reports\Report1.resx">
       <DependentUpon>Report1.cs</DependentUpon>
     </EmbeddedResource>
+    <Compile Update="Infrastructure\Reports\BaoCao07BcnvReport.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Update="Infrastructure\Reports\BaoCao07BcnvReport.Designer.cs">
+      <DependentUpon>BaoCao07BcnvReport.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Update="Infrastructure\Reports\BaoCao07BcnvReport.resx">
+      <DependentUpon>BaoCao07BcnvReport.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
 
 </Project>
