@@ -1,0 +1,189 @@
+Created At: 2026-10-15T15:08:07+07:00
+Completed At: 2026-10-15T15:08:07+07:00
+File Path: `file:///d:/Workspace/TECA/TestReport/TestReport.Api/Infrastructure/Reports/BaoCao12CbhReport.Designer.cs`
+Total Lines: 780
+Total Bytes: 42464
+Showing lines 1 to 180
+The following code has been modified to include a line number before every line, in the format: <line_number>: <original_line>. Please note that any changes targeting the original code should remove the line number, colon, and leading space.
+1: namespace TestReport.Api.Infrastructure.Reports
+2: {
+3:     partial class BaoCao12CbhReport
+4:     {
+5:         private System.ComponentModel.IContainer components = null;
+6: 
+7:         protected override void Dispose(bool disposing)
+8:         {
+9:             if (disposing && (components != null))
+10:             {
+11:                 components.Dispose();
+12:             }
+13:             base.Dispose(disposing);
+14:         }
+15: 
+16:         #region Designer generated code
+17: 
+18:         private void InitializeComponent()
+19:         {
+20:             this.components = new System.ComponentModel.Container();
+21:             DevExpress.XtraReports.UI.XRSummary xrSummary4 = new DevExpress.XtraReports.UI.XRSummary();
+22:             DevExpress.XtraReports.UI.XRSummary xrSummary5 = new DevExpress.XtraReports.UI.XRSummary();
+23:             DevExpress.XtraReports.UI.XRSummary xrSummary6 = new DevExpress.XtraReports.UI.XRSummary();
+24:             DevExpress.XtraReports.UI.XRSummary xrSummary7 = new DevExpress.XtraReports.UI.XRSummary();
+25:             this.pCoQuanBhxh = new DevExpress.XtraReports.Parameters.Parameter();
+26:             this.pThang = new DevExpress.XtraReports.Parameters.Parameter();
+27:             this.pNam = new DevExpress.XtraReports.Parameters.Parameter();
+28:             this.pBhxhCoSo = new DevExpress.XtraReports.Parameters.Parameter();
+29:             this.pXaPhuongToChiTra = new DevExpress.XtraReports.Parameters.Parameter();
+30:             this.pHinhThucChiTra = new DevExpress.XtraReports.Parameters.Parameter();
+31:             this.pNguonKinhPhi = new DevExpress.XtraReports.Parameters.Parameter();
+32:             this.TopMargin = new DevExpress.XtraReports.UI.TopMarginBand();
+33:             this.BottomMargin = new DevExpress.XtraReports.UI.BottomMarginBand();
+34:             this.ReportHeader = new DevExpress.XtraReports.UI.ReportHeaderBand();
+35:             this.lblDonViChuQuan = new DevExpress.XtraReports.UI.XRLabel();
+36:             this.lblCoQuanBhxh = new DevExpress.XtraReports.UI.XRLabel();
+37:             this.lblMauSo = new DevExpress.XtraReports.UI.XRLabel();
+38:             this.lblTieuDe = new DevExpress.XtraReports.UI.XRLabel();
+39:             this.lblThangNam = new DevExpress.XtraReports.UI.XRLabel();
+40:             this.lblBhxhXaPhuong = new DevExpress.XtraReports.UI.XRLabel();
+41:             this.lblHinhThucChiTra = new DevExpress.XtraReports.UI.XRLabel();
+42:             this.lblNguonKinhPhi = new DevExpress.XtraReports.UI.XRLabel();
+43:             this.PageHeader = new DevExpress.XtraReports.UI.PageHeaderBand();
+44:             this.tblHeader = new DevExpress.XtraReports.UI.XRTable();
+45:             this.rowHeader1 = new DevExpress.XtraReports.UI.XRTableRow();
+46:             this.colH1_Stt = new DevExpress.XtraReports.UI.XRTableCell();
+47:             this.colH1_HoTen = new DevExpress.XtraReports.UI.XRTableCell();
+48:             this.colH1_MaBhxh = new DevExpress.XtraReports.UI.XRTableCell();
+49:             this.colH1_LyDo = new DevExpress.XtraReports.UI.XRTableCell();
+50:             this.colH1_NgayGiam = new DevExpress.XtraReports.UI.XRTableCell();
+51:             this.colH1_DaChiTra = new DevExpress.XtraReports.UI.XRTableCell();
+52:             this.colH1_ConPhaiTra = new DevExpress.XtraReports.UI.XRTableCell();
+53:             this.colH1_PhaiThuHoi = new DevExpress.XtraReports.UI.XRTableCell();
+54:             this.rowHeader2 = new DevExpress.XtraReports.UI.XRTableRow();
+55:             this.colH2_A = new DevExpress.XtraReports.UI.XRTableCell();
+56:             this.colH2_B = new DevExpress.XtraReports.UI.XRTableCell();
+57:             this.colH2_1 = new DevExpress.XtraReports.UI.XRTableCell();
+58:             this.colH2_2 = new DevExpress.XtraReports.UI.XRTableCell();
+59:             this.colH2_3 = new DevExpress.XtraReports.UI.XRTableCell();
+60:             this.colH2_4 = new DevExpress.XtraReports.UI.XRTableCell();
+61:             this.colH2_5 = new DevExpress.XtraReports.UI.XRTableCell();
+62:             this.colH2_6 = new DevExpress.XtraReports.UI.XRTableCell();
+63:             this.Detail = new DevExpress.XtraReports.UI.DetailBand();
+64:             this.tblDetail = new DevExpress.XtraReports.UI.XRTable();
+65:             this.rowDetail = new DevExpress.XtraReports.UI.XRTableRow();
+66:             this.cellStt = new DevExpress.XtraReports.UI.XRTableCell();
+67:             this.cellHoVaTen = new DevExpress.XtraReports.UI.XRTableCell();
+68:             this.cellMaBhxh = new DevExpress.XtraReports.UI.XRTableCell();
+69:             this.cellLyDoGiam = new DevExpress.XtraReports.UI.XRTableCell();
+70:             this.cellNgayGiam = new DevExpress.XtraReports.UI.XRTableCell();
+71:             this.cellDaChiTraHetNgay = new DevExpress.XtraReports.UI.XRTableCell();
+72:             this.cellSoTienConPhaiTra = new DevExpress.XtraReports.UI.XRTableCell();
+73:             this.cellSoTienPhaiThuHoi = new DevExpress.XtraReports.UI.XRTableCell();
+74:             this.ReportFooter = new DevExpress.XtraReports.UI.ReportFooterBand();
+75:             this.tblTotal = new DevExpress.XtraReports.UI.XRTable();
+76:             this.rowTotal = new DevExpress.XtraReports.UI.XRTableRow();
+77:             this.cellTotalTitle = new DevExpress.XtraReports.UI.XRTableCell();
+78:             this.cellTotalCol1 = new DevExpress.XtraReports.UI.XRTableCell();
+79:             this.cellTotalCol2 = new DevExpress.XtraReports.UI.XRTableCell();
+80:             this.cellTotalCol3 = new DevExpress.XtraReports.UI.XRTableCell();
+81:             this.cellTotalCol4 = new DevExpress.XtraReports.UI.XRTableCell();
+82:             this.cellTotalCol5 = new DevExpress.XtraReports.UI.XRTableCell();
+83:             this.cellTotalCol6 = new DevExpress.XtraReports.UI.XRTableCell();
+84:             this.objectDataSource1 = new DevExpress.DataAccess.ObjectBinding.ObjectDataSource(this.components);
+85:             this.xrControlStyle1 = new DevExpress.XtraReports.UI.XRControlStyle();
+86:             ((System.ComponentModel.ISupportInitialize)(this.tblHeader)).BeginInit();
+87:             ((System.ComponentModel.ISupportInitialize)(this.tblDetail)).BeginInit();
+88:             ((System.ComponentModel.ISupportInitialize)(this.tblTotal)).BeginInit();
+89:             ((System.ComponentModel.ISupportInitialize)(this.objectDataSource1)).BeginInit();
+90:             ((System.ComponentModel.ISupportInitialize)(this)).BeginInit();
+91:             // 
+92:             // pCoQuanBhxh
+93:             // 
+94:             this.pCoQuanBhxh.Description = "Tên d?a phuong co quan BHXH";
+95:             this.pCoQuanBhxh.Name = "pCoQuanBhxh";
+96:             this.pCoQuanBhxh.ValueInfo = "HÀ N?I";
+97:             this.pCoQuanBhxh.Visible = false;
+98:             // 
+99:             // pThang
+100:             // 
+101:             this.pThang.Description = "Tháng báo cáo";
+102:             this.pThang.Name = "pThang";
+103:             this.pThang.Type = typeof(int);
+104:             this.pThang.ValueInfo = "10";
+105:             this.pThang.Visible = false;
+106:             // 
+107:             // pNam
+108:             // 
+109:             this.pNam.Description = "Nam báo cáo";
+110:             this.pNam.Name = "pNam";
+111:             this.pNam.Type = typeof(int);
+112:             this.pNam.ValueInfo = "2026";
+113:             this.pNam.Visible = false;
+114:             // 
+115:             // pBhxhCoSo
+116:             // 
+117:             this.pBhxhCoSo.Description = "BHXH co s?";
+118:             this.pBhxhCoSo.Name = "pBhxhCoSo";
+119:             this.pBhxhCoSo.ValueInfo = "BHXH Ba Ðình";
+120:             this.pBhxhCoSo.Visible = false;
+121:             // 
+122:             // pXaPhuongToChiTra
+123:             // 
+124:             this.pXaPhuongToChiTra.Description = "Xã, phu?ng, t? chi tr?";
+125:             this.pXaPhuongToChiTra.Name = "pXaPhuongToChiTra";
+126:             this.pXaPhuongToChiTra.ValueInfo = "UBND Phu?ng C?ng V?";
+127:             this.pXaPhuongToChiTra.Visible = false;
+128:             // 
+129:             // pHinhThucChiTra
+130:             // 
+131:             this.pHinhThucChiTra.Description = "Hình th?c chi tr?";
+132:             this.pHinhThucChiTra.Name = "pHinhThucChiTra";
+133:             this.pHinhThucChiTra.ValueInfo = "Chi tr? ti?n m?t qua Buu di?n";
+134:             this.pHinhThucChiTra.Visible = false;
+135:             // 
+136:             // pNguonKinhPhi
+137:             // 
+138:             this.pNguonKinhPhi.Description = "Ngu?n kinh phí";
+139:             this.pNguonKinhPhi.Name = "pNguonKinhPhi";
+140:             this.pNguonKinhPhi.ValueInfo = "Ngu?n qu? BHXH & Qu? BHTN";
+141:             this.pNguonKinhPhi.Visible = false;
+142:             // 
+143:             // TopMargin
+144:             // 
+145:             this.TopMargin.HeightF = 40F;
+146:             this.TopMargin.Name = "TopMargin";
+147:             // 
+148:             // BottomMargin
+149:             // 
+150:             this.BottomMargin.HeightF = 40F;
+151:             this.BottomMargin.Name = "BottomMargin";
+152:             // 
+153:             // ReportHeader
+154:             // 
+155:             this.ReportHeader.Controls.AddRange(new DevExpress.XtraReports.UI.XRControl[] {
+156:             this.lblDonViChuQuan,
+157:             this.lblCoQuanBhxh,
+158:             this.lblMauSo,
+159:             this.lblTieuDe,
+160:             this.lblThangNam,
+161:             this.lblBhxhXaPhuong,
+162:             this.lblHinhThucChiTra,
+163:             this.lblNguonKinhPhi});
+164:             this.ReportHeader.HeightF = 185F;
+165:             this.ReportHeader.Name = "ReportHeader";
+166:             // 
+167:             // lblDonViChuQuan
+168:             // 
+169:             this.lblDonViChuQuan.Font = new DevExpress.Drawing.DXFont("Times New Roman", 9F);
+170:             this.lblDonViChuQuan.LocationFloat = new DevExpress.Utils.PointFloat(0F, 0F);
+171:             this.lblDonViChuQuan.Multiline = true;
+172:             this.lblDonViChuQuan.Name = "lblDonViChuQuan";
+173:             this.lblDonViChuQuan.Padding = new DevExpress.XtraPrinting.PaddingInfo(2F, 2F, 0F, 0F, 100F);
+174:             this.lblDonViChuQuan.SizeF = new System.Drawing.SizeF(400F, 20F);
+175:             this.lblDonViChuQuan.StylePriority.UseFont = false;
+176:             this.lblDonViChuQuan.StylePriority.UseTextAlignment = false;
+177:             this.lblDonViChuQuan.Text = "TÊN CO QUAN, T? CH?C CH? QU?N";
+178:             this.lblDonViChuQuan.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleLeft;
+179:             // 
+180:             // lblCoQuanBhxh
+The above content does NOT show the entire file contents. If you need to view any lines of the file which were not shown to complete your task, call this tool again to view those lines.
+

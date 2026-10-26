@@ -119,6 +119,67 @@ namespace TestReport.Api.Controllers
             Response.Headers.Append("Content-Disposition", $"attachment; filename=\"{fileName}\"");
             return File(stream, "application/pdf", fileName);
         }
+
+        /// <summary>
+        /// Xem trước PDF Mẫu số 12-CBH (Danh sách báo giảm hưởng, tạm dừng hưởng các chế độ BHXH hàng tháng, TCTN)
+        /// </summary>
+        [HttpGet("12-cbh-preview")]
+        public IActionResult Preview12CbhPdf([FromQuery] int? thang = null, [FromQuery] int? nam = null)
+        {
+            var reportData = Domain.Models.BaoCao12CbhReportData.CreateSample();
+            if (thang.HasValue) reportData.Thang = thang.Value;
+            if (nam.HasValue) reportData.Nam = nam.Value;
+
+            using var report = new Infrastructure.Reports.BaoCao12CbhReport(reportData);
+
+            var stream = new System.IO.MemoryStream();
+            report.ExportToPdf(stream);
+            stream.Position = 0;
+
+            int m = thang ?? 10;
+            int y = nam ?? 2026;
+            Response.Headers.Append("Content-Disposition", $"inline; filename=\"BaoCao_12_CBH_Thang{m}_{y}.pdf\"");
+            return File(stream, "application/pdf");
+        }
+
+        /// <summary>
+        /// Xuất file PDF Mẫu số 12-CBH từ dữ liệu JSON Body truyền vào
+        /// </summary>
+        [HttpPost("12-cbh-export-pdf")]
+        public IActionResult Export12CbhPdfFromBody([FromBody] Domain.Models.BaoCao12CbhReportData? data)
+        {
+            using var report = new Infrastructure.Reports.BaoCao12CbhReport(data);
+
+            var stream = new System.IO.MemoryStream();
+            report.ExportToPdf(stream);
+            stream.Position = 0;
+
+            var m = data?.Thang ?? 10;
+            var y = data?.Nam ?? 2026;
+            string fileName = $"BaoCao_12_CBH_Thang{m}_{y}.pdf";
+            Response.Headers.Append("Content-Disposition", $"attachment; filename=\"{fileName}\"");
+            return File(stream, "application/pdf", fileName);
+        }
+
+        /// <summary>
+        /// Tải xuống file PDF Mẫu số 12-CBH (GET)
+        /// </summary>
+        [HttpGet("12-cbh-export-pdf")]
+        public IActionResult Export12CbhPdf([FromQuery] int thang = 10, [FromQuery] int nam = 2026)
+        {
+            var reportData = Domain.Models.BaoCao12CbhReportData.CreateSample();
+            reportData.Thang = thang;
+            reportData.Nam = nam;
+            using var report = new Infrastructure.Reports.BaoCao12CbhReport(reportData);
+
+            var stream = new System.IO.MemoryStream();
+            report.ExportToPdf(stream);
+            stream.Position = 0;
+
+            string fileName = $"BaoCao_12_CBH_Thang{thang}_{nam}.pdf";
+            Response.Headers.Append("Content-Disposition", $"attachment; filename=\"{fileName}\"");
+            return File(stream, "application/pdf", fileName);
+        }
     }
 }
 
