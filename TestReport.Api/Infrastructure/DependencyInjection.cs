@@ -17,6 +17,7 @@ namespace TestReport.Api.Infrastructure
 
             // Repositories
             services.AddScoped<IMultiColumnReportRepository, MultiColumnReportRepository>();
+            services.AddSingleton<IMultiColumnPrintSettingsStore, FileMultiColumnPrintSettingsStore>();
 
             // Report Renderers (DevExpress)
             services.AddScoped<IReportRenderer, DevExpressMultiColumnReportRenderer>();
@@ -25,4 +26,3 @@ namespace TestReport.Api.Infrastructure
         }
     }
 }
-

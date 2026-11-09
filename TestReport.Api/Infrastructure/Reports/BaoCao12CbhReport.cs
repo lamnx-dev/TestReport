@@ -20,7 +20,6 @@ namespace TestReport.Api.Infrastructure.Reports
         {
             // Gán trực tiếp dữ liệu nhóm mới (không chia nhánh 2 trường hợp)
             this.DataSource = data.Groups;
-            this.DetailReportItems.DataSource = data.Groups;
 
             // Gán các giá trị Header Parameter
             if (!string.IsNullOrWhiteSpace(data.CoQuanBhxh)) pCoQuanBhxh.Value = data.CoQuanBhxh;

@@ -3,6 +3,7 @@ import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 import { ReportApiService } from '../../../core/services/report-api.service';
 import { MultiColumnReportRequest } from '../../../core/models/report-request.model';
 import { ReportBase64Response } from '../../../core/models/report-base64.model';
+import { MultiColumnPrintSettings } from '../../../core/models/print-settings.model';
 
 @Injectable()
 export class ReportStateService {
@@ -18,6 +19,11 @@ export class ReportStateService {
 
   readonly isParametersOpen = signal<boolean>(true);
   readonly isPreviewPopupVisible = signal<boolean>(false);
+  readonly isPrintSettingsOpen = signal<boolean>(false);
+  readonly printSettings = signal<MultiColumnPrintSettings | null>(null);
+  readonly isSavingPrintSettings = signal<boolean>(false);
+  readonly printSettingsError = signal<string | null>(null);
+  private loadVersion = 0;
 
   readonly reportResponse = signal<ReportBase64Response | null>(null);
   readonly previewUrl = signal<string | null>(null);
@@ -48,20 +54,25 @@ export class ReportStateService {
   });
 
   loadReport(): void {
+    const version = ++this.loadVersion;
     this.isLoading.set(true);
     this.errorMessage.set(null);
+    this.reportResponse.set(null);
+    this.previewUrl.set(null);
 
     const currentReq = this.request();
-    const directPreviewUrl = this.apiService.getPreviewUrl(currentReq);
+    const directPreviewUrl = `${this.apiService.getPreviewUrl(currentReq)}&_=${Date.now()}`;
 
     // 1. Tải Base64 và URL preview
     this.apiService.getBase64(currentReq).subscribe({
       next: (data) => {
+        if (version !== this.loadVersion) return;
         this.reportResponse.set(data);
         this.previewUrl.set(directPreviewUrl);
         this.isLoading.set(false);
       },
       error: (err) => {
+        if (version !== this.loadVersion) return;
         console.error('Lỗi khi tải báo cáo:', err);
         const msg = err.message || 'Không thể kết nối đến Backend TestReport.Api.';
         this.errorMessage.set(msg);
@@ -97,6 +108,64 @@ export class ReportStateService {
       },
       error: (err) => {
         console.warn('Không tải được dữ liệu DataGrid:', err);
+      }
+    });
+  }
+
+  initialize(): void {
+    this.apiService.getPrintSettings().subscribe({
+      next: settings => {
+        this.printSettings.set(settings);
+        this.loadReport();
+      },
+      error: err => {
+        this.errorMessage.set(err?.error?.message || 'Không tải được cấu hình in từ Backend.');
+      }
+    });
+  }
+
+  openPrintSettings(): void {
+    this.printSettingsError.set(null);
+    this.isPrintSettingsOpen.set(true);
+  }
+
+  closePrintSettings(): void {
+    this.isPrintSettingsOpen.set(false);
+    this.printSettingsError.set(null);
+  }
+
+  savePrintSettings(settings: MultiColumnPrintSettings): void {
+    this.isSavingPrintSettings.set(true);
+    this.printSettingsError.set(null);
+    this.apiService.savePrintSettings(settings).subscribe({
+      next: saved => {
+        this.printSettings.set(saved);
+        this.isSavingPrintSettings.set(false);
+        this.closePrintSettings();
+        this.loadReport();
+        this.showToast('Đã lưu cấu hình in.');
+      },
+      error: err => {
+        this.isSavingPrintSettings.set(false);
+        this.printSettingsError.set(err?.error?.message || 'Không lưu được cấu hình in.');
+      }
+    });
+  }
+
+  resetPrintSettings(): void {
+    this.isSavingPrintSettings.set(true);
+    this.printSettingsError.set(null);
+    this.apiService.resetPrintSettings().subscribe({
+      next: defaults => {
+        this.printSettings.set(defaults);
+        this.isSavingPrintSettings.set(false);
+        this.closePrintSettings();
+        this.loadReport();
+        this.showToast('Đã khôi phục cấu hình in mặc định.');
+      },
+      error: err => {
+        this.isSavingPrintSettings.set(false);
+        this.printSettingsError.set(err?.error?.message || 'Không khôi phục được cấu hình in.');
       }
     });
   }

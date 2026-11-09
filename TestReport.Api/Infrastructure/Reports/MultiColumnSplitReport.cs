@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Data;
 using DevExpress.XtraReports.UI;
+using DevExpress.Drawing;
 using TestReport.Api.Domain.Models;
 
 namespace TestReport.Api.Infrastructure.Reports
@@ -16,6 +17,81 @@ namespace TestReport.Api.Infrastructure.Reports
         public MultiColumnSplitReport(MultiColumnReportData reportData) : this()
         {
             InitializeReport(reportData);
+        }
+
+        public MultiColumnSplitReport(MultiColumnReportData reportData, MultiColumnPrintSettings settings) : this(reportData)
+        {
+            ApplyPrintSettings(settings);
+        }
+
+        private void ApplyPrintSettings(MultiColumnPrintSettings settings)
+        {
+            Landscape = settings.PaperOrientation == "landscape";
+            PaperKind = DevExpress.Drawing.Printing.DXPaperKind.A4;
+            var contentWidth = Landscape ? 1089f : 746.77f;
+
+            lblTitle.Font = CreateFont(settings.TitleFont);
+            lblSub.Font = CreateFont(settings.SubtitleFont);
+            lblTitle.WidthF = contentWidth;
+            lblSub.WidthF = contentWidth;
+            lblTitle.WordWrap = true;
+            lblTitle.CanGrow = false;
+            lblTitle.HeightF = 50;
+            lblSub.LocationFloat = new DevExpress.Utils.PointFloat(0, 56);
+            ReportHeader.HeightF = 85;
+
+            foreach (var table in new[] { tblHeader1, tblHeader2, tblHeader3 })
+            {
+                table.WidthF = contentWidth;
+                table.Font = CreateFont(settings.HeaderFont);
+                foreach (XRTableCell cell in table.Rows[0].Cells) cell.Font = CreateFont(settings.HeaderFont);
+            }
+            foreach (var table in new[] { tblDetail1, tblDetail2, tblDetail3 })
+            {
+                table.WidthF = contentWidth;
+                table.Font = CreateFont(settings.DetailFont);
+                foreach (XRTableCell cell in table.Rows[0].Cells) cell.Font = CreateFont(settings.DetailFont);
+            }
+            pageInfoNumber.LocationFloat = new DevExpress.Utils.PointFloat(contentWidth - 400, 10);
+
+            if (settings.RepeatTitleOnEveryPage)
+            {
+                ReportHeader.Controls.Remove(lblTitle);
+                ReportHeader.Controls.Remove(lblSub);
+                ReportHeader.HeightF = 0;
+                var pageHeader = new PageHeaderBand { HeightF = 85 };
+                pageHeader.Controls.AddRange(new XRControl[] { lblTitle, lblSub });
+                Bands.Add(pageHeader);
+            }
+
+            if (settings.ShowSigner)
+            {
+                var footer = new ReportFooterBand { HeightF = 80 };
+                var title = new XRLabel
+                {
+                    Text = settings.SignerTitle,
+                    Font = CreateFont(settings.HeaderFont),
+                    BoundsF = new System.Drawing.RectangleF(contentWidth - 230, 0, 230, 24),
+                    TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter
+                };
+                var name = new XRLabel
+                {
+                    Text = settings.SignerName,
+                    Font = CreateFont(settings.DetailFont),
+                    BoundsF = new System.Drawing.RectangleF(contentWidth - 230, 52, 230, 24),
+                    TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter
+                };
+                footer.Controls.AddRange(new XRControl[] { title, name });
+                Bands.Add(footer);
+            }
+        }
+
+        private static DXFont CreateFont(PrintFontSettings settings)
+        {
+            var style = DXFontStyle.Regular;
+            if (settings.Bold) style |= DXFontStyle.Bold;
+            if (settings.Italic) style |= DXFontStyle.Italic;
+            return new DXFont(settings.Family, settings.Size, style);
         }
 
         private void InitializeReport(MultiColumnReportData reportData)
@@ -75,4 +151,3 @@ namespace TestReport.Api.Infrastructure.Reports
         }
     }
 }
-

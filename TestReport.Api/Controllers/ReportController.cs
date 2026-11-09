@@ -10,11 +10,26 @@ namespace TestReport.Api.Controllers
     public class ReportController : ControllerBase
     {
         private readonly IMultiColumnReportService _reportService;
+        private readonly IMultiColumnPrintSettingsStore _printSettings;
 
-        public ReportController(IMultiColumnReportService reportService)
+        public ReportController(IMultiColumnReportService reportService, IMultiColumnPrintSettingsStore printSettings)
         {
             _reportService = reportService;
+            _printSettings = printSettings;
         }
+
+        [HttpGet("multi-column-print-settings")]
+        public ActionResult<MultiColumnPrintSettings> GetMultiColumnPrintSettings() => _printSettings.Get();
+
+        [HttpPut("multi-column-print-settings")]
+        public ActionResult<MultiColumnPrintSettings> SaveMultiColumnPrintSettings([FromBody] MultiColumnPrintSettings settings)
+        {
+            if (MultiColumnPrintSettings.Validate(settings) is { } error) return BadRequest(new { message = error });
+            return _printSettings.Save(settings);
+        }
+
+        [HttpDelete("multi-column-print-settings")]
+        public ActionResult<MultiColumnPrintSettings> ResetMultiColumnPrintSettings() => _printSettings.Reset();
 
         /// <summary>
         /// Xem trước PDF báo cáo nhiều cột trực tiếp trên trình duyệt
@@ -182,4 +197,3 @@ namespace TestReport.Api.Controllers
         }
     }
 }
-

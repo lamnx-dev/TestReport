@@ -53,6 +53,16 @@ import { ReportStateService } from '../../services/report-state.service';
 
         <dxi-item location="after" locateInMenu="auto">
           <dx-button
+            icon="preferences"
+            text="Tùy chỉnh in"
+            stylingMode="outlined"
+            [disabled]="!state.printSettings() || state.isSavingPrintSettings()"
+            (onClick)="state.openPrintSettings()"
+          ></dx-button>
+        </dxi-item>
+
+        <dxi-item location="after" locateInMenu="auto">
+          <dx-button
             icon="refresh"
             text="Tải lại"
             stylingMode="outlined"

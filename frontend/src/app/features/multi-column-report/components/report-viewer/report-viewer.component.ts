@@ -51,6 +51,18 @@ import { ReportStateService } from '../../services/report-state.service';
           toolbar="top"
           location="after"
           [options]="{
+            icon: 'preferences',
+            text: 'Tùy chỉnh in',
+            stylingMode: 'outlined',
+            onClick: onSettingsClick
+          }">
+        </dxi-toolbar-item>
+
+        <dxi-toolbar-item
+          widget="dxButton"
+          toolbar="top"
+          location="after"
+          [options]="{
             icon: 'print',
             text: 'In báo cáo',
             type: 'default',
@@ -132,6 +144,7 @@ export class ReportViewerComponent {
   readonly state = inject(ReportStateService);
 
   readonly onPrintClick = () => this.state.triggerPrint();
+  readonly onSettingsClick = () => this.state.openPrintSettings();
   readonly onDownloadClick = () => this.state.triggerDownload();
   readonly onOpenTabClick = () => this.state.openInNewTab();
 }

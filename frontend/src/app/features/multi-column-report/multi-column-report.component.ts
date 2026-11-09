@@ -4,6 +4,7 @@ import { ReportHeaderComponent } from './components/report-header/report-header.
 import { ReportToolbarComponent } from './components/report-toolbar/report-toolbar.component';
 import { ReportViewerComponent } from './components/report-viewer/report-viewer.component';
 import { ReportDrawerComponent } from './components/report-drawer/report-drawer.component';
+import { PrintSettingsComponent } from './components/print-settings/print-settings.component';
 
 @Component({
   selector: 'app-multi-column-report',
@@ -12,7 +13,8 @@ import { ReportDrawerComponent } from './components/report-drawer/report-drawer.
     ReportHeaderComponent,
     ReportToolbarComponent,
     ReportViewerComponent,
-    ReportDrawerComponent
+    ReportDrawerComponent,
+    PrintSettingsComponent
   ],
   providers: [ReportStateService],
   template: `
@@ -30,6 +32,7 @@ import { ReportDrawerComponent } from './components/report-drawer/report-drawer.
 
       <!-- Base64 & Technical Inspector Drawer -->
       <app-report-drawer></app-report-drawer>
+      <app-print-settings></app-print-settings>
     </div>
   `
 })
@@ -38,6 +41,6 @@ export class MultiColumnReportComponent implements OnInit {
 
   ngOnInit(): void {
     // Tự động tải dữ liệu lần đầu
-    this.state.loadReport();
+    this.state.initialize();
   }
 }

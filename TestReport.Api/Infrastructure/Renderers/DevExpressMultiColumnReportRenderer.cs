@@ -9,18 +9,18 @@ namespace TestReport.Api.Infrastructure.Renderers
 {
     public class DevExpressMultiColumnReportRenderer : IReportRenderer
     {
-        public Stream RenderToPdfStream(MultiColumnReportData reportData)
+        public Stream RenderToPdfStream(MultiColumnReportData reportData, MultiColumnPrintSettings settings)
         {
-            var report = new MultiColumnSplitReport(reportData);
+            using var report = new MultiColumnSplitReport(reportData, settings);
             var stream = new MemoryStream();
             report.ExportToPdf(stream);
             stream.Position = 0;
             return stream;
         }
 
-        public ReportBase64Response RenderToBase64(MultiColumnReportData reportData, string fileName = "BaoCao_NhieuCot_TachTrang.pdf")
+        public ReportBase64Response RenderToBase64(MultiColumnReportData reportData, MultiColumnPrintSettings settings, string fileName = "BaoCao_NhieuCot_TachTrang.pdf")
         {
-            using var report = new MultiColumnSplitReport(reportData);
+            using var report = new MultiColumnSplitReport(reportData, settings);
             report.CreateDocument();
             int totalPages = report.Pages.Count;
 
@@ -44,4 +44,3 @@ namespace TestReport.Api.Infrastructure.Renderers
         }
     }
 }
-

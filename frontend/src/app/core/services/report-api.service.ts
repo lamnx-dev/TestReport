@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 import { MultiColumnReportRequest } from '../models/report-request.model';
 import { ReportBase64Response } from '../models/report-base64.model';
 import { MultiColumnReportData } from '../models/report-data.model';
+import { MultiColumnPrintSettings } from '../models/print-settings.model';
 
 @Injectable({
   providedIn: 'root'
@@ -45,5 +46,17 @@ export class ReportApiService {
   getReportData(request: MultiColumnReportRequest): Observable<MultiColumnReportData> {
     const params = this.buildParams(request);
     return this.http.get<MultiColumnReportData>(`${this.baseUrl}/multi-column-data`, { params });
+  }
+
+  getPrintSettings(): Observable<MultiColumnPrintSettings> {
+    return this.http.get<MultiColumnPrintSettings>(`${this.baseUrl}/multi-column-print-settings`);
+  }
+
+  savePrintSettings(settings: MultiColumnPrintSettings): Observable<MultiColumnPrintSettings> {
+    return this.http.put<MultiColumnPrintSettings>(`${this.baseUrl}/multi-column-print-settings`, settings);
+  }
+
+  resetPrintSettings(): Observable<MultiColumnPrintSettings> {
+    return this.http.delete<MultiColumnPrintSettings>(`${this.baseUrl}/multi-column-print-settings`);
   }
 }
