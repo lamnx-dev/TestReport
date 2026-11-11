@@ -1,1 +1,169 @@
-<app-multi-column-report></app-multi-column-report>
+<header class="topbar">
+  <div class="brand-icon" aria-hidden="true">▤</div>
+  <div>
+    <h1>Không gian báo cáo</h1>
+    <p>Chọn mẫu · Tùy chỉnh · Xuất PDF</p>
+  </div>
+  <span class="sample-badge">Dữ liệu minh họa</span>
+</header>
+<main class="workspace">
+  <aside class="settings" aria-label="Cấu hình báo cáo">
+    <section class="report-picker">
+      <span class="eyebrow">01 / CHỌN BÁO CÁO</span>
+      <label for="report">Mẫu báo cáo</label>
+      <select
+        id="report"
+        [ngModel]="reportId"
+        (ngModelChange)="selectReport($event)"
+        [disabled]="!catalog()"
+      >
+        @for (report of catalog()?.reports ?? []; track report.id) {
+          <option [value]="report.id">{{ report.name }}</option>
+        }
+      </select>
+      @if (catalogLoading()) {
+        <p role="status">Đang tải danh sách…</p>
+      }
+      @if (!catalog() && !catalogLoading()) {
+        <button type="button" class="secondary" (click)="loadCatalog()">Tải lại danh sách</button>
+      }
+      <p class="hint">Khổ giấy và bố cục được giữ theo mẫu thiết kế.</p>
+    </section>
+    <div class="section-heading"><span class="eyebrow">02 / TÙY CHỈNH IN</span></div>
+    @for (region of regions; track region.key) {
+      <fieldset [disabled]="!catalog()">
+        <legend>{{ region.label }}</legend>
+        <p class="hint">{{ region.hint }}</p>
+        <label [for]="region.key + '-font'">Font chữ</label>
+        <select
+          [id]="region.key + '-font'"
+          [ngModel]="appearance[region.key]?.fontFamily ?? null"
+          (ngModelChange)="update(region.key, 'fontFamily', $event)"
+        >
+          <option [ngValue]="null">Theo mẫu</option>
+          @for (font of catalog()?.fonts ?? []; track font) {
+            <option [value]="font">{{ font }}</option>
+          }
+        </select>
+        <div class="field-row">
+          <div>
+            <label [for]="region.key + '-size'">Cỡ chữ (pt)</label>
+            <input
+              [id]="region.key + '-size'"
+              type="number"
+              placeholder="Theo mẫu"
+              step="0.5"
+              [min]="catalog()?.minFontSize ?? 6"
+              [max]="catalog()?.maxFontSize ?? 24"
+              [ngModel]="appearance[region.key]?.fontSize"
+              (ngModelChange)="update(region.key, 'fontSize', $event)"
+            />
+          </div>
+          <div>
+            <label [for]="region.key + '-color'">Màu chữ</label>
+            <div class="color-field">
+              <input
+                type="color"
+                [attr.aria-label]="'Chọn màu ' + region.label"
+                [ngModel]="appearance[region.key]?.color ?? '#000000'"
+                (ngModelChange)="update(region.key, 'color', $event)"
+              />
+              <input
+                [id]="region.key + '-color'"
+                type="text"
+                placeholder="Theo mẫu"
+                maxlength="7"
+                [ngModel]="appearance[region.key]?.color"
+                (ngModelChange)="update(region.key, 'color', $event)"
+              />
+            </div>
+          </div>
+        </div>
+        <div class="field-row">
+          <div>
+            <label [for]="region.key + '-bold'">Chữ đậm</label>
+            <select
+              [id]="region.key + '-bold'"
+              [ngModel]="appearance[region.key]?.bold ?? null"
+              (ngModelChange)="update(region.key, 'bold', $event)"
+            >
+              <option [ngValue]="null">Theo mẫu</option>
+              <option [ngValue]="true">Có</option>
+              <option [ngValue]="false">Không</option>
+            </select>
+          </div>
+          <div>
+            <label [for]="region.key + '-italic'">Chữ nghiêng</label>
+            <select
+              [id]="region.key + '-italic'"
+              [ngModel]="appearance[region.key]?.italic ?? null"
+              (ngModelChange)="update(region.key, 'italic', $event)"
+            >
+              <option [ngValue]="null">Theo mẫu</option>
+              <option [ngValue]="true">Có</option>
+              <option [ngValue]="false">Không</option>
+            </select>
+          </div>
+        </div>
+      </fieldset>
+    }
+    <div class="settings-actions">
+      @if (validationError()) {
+        <p role="alert" class="error">{{ validationError() }}</p>
+      }
+      <button
+        type="button"
+        class="primary"
+        (click)="generate()"
+        [disabled]="!catalog() || loading() || !!validationError()"
+      >
+        {{ loading() ? 'Đang tạo báo cáo…' : 'Tạo báo cáo' }}
+      </button>
+      <button type="button" class="text-button" (click)="reset()" [disabled]="!catalog()">
+        Khôi phục theo mẫu
+      </button>
+    </div>
+  </aside>
+  <section class="preview" aria-label="Xem trước PDF" [attr.aria-busy]="loading()">
+    <div class="preview-toolbar">
+      <div>
+        <span class="eyebrow">BẢN IN</span>
+        <h2>{{ reportId === 's11h' ? 'S11-H' : 'S106-H' }}</h2>
+      </div>
+      <div class="pdf-actions">
+        <button type="button" class="secondary" [disabled]="!canUsePdf()" (click)="download()">
+          Tải PDF
+        </button>
+        <button type="button" class="secondary" [disabled]="!canUsePdf()" (click)="openForPrint()">
+          Mở PDF để in ↗
+        </button>
+      </div>
+    </div>
+    @if (error()) {
+      <div class="error error-banner" role="alert">{{ error() }}</div>
+    }
+    @if (dirty() && pdfUrl() && !loading()) {
+      <div class="notice" role="status">
+        Cấu hình đã thay đổi. Bấm “Tạo báo cáo” để cập nhật bản in.
+      </div>
+    }
+    <div class="pdf-canvas">
+      @if (pdfUrl(); as url) {
+        <iframe [src]="url" title="Bản xem trước PDF báo cáo"></iframe>
+      } @else {
+        <div class="empty-state">
+          <div class="document-icon" aria-hidden="true">▤</div>
+          <h2>Bản báo cáo của bạn sẽ xuất hiện tại đây</h2>
+          <p>Chọn mẫu, tùy chỉnh định dạng và bấm “Tạo báo cáo”.</p>
+          <span>PDF · Dữ liệu minh họa · Bố cục theo mẫu</span>
+        </div>
+      }
+      @if (loading()) {
+        <div class="loading-overlay" role="status">
+          <div class="spinner"></div>
+          <p>Đang tạo PDF…</p>
+        </div>
+      }
+    </div>
+  </section>
+</main>

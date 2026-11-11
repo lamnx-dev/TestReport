@@ -145,6 +145,7 @@
             this.xrLabel4.LocationFloat = new DevExpress.Utils.PointFloat(0F, 90.16668F);
             this.xrLabel4.Multiline = true;
             this.xrLabel4.Name = "xrLabel4";
+            this.xrLabel4.Tag = "ReportTitle";
             this.xrLabel4.Padding = new DevExpress.XtraPrinting.PaddingInfo(2F, 2F, 0F, 0F, 100F);
             this.xrLabel4.SizeF = new System.Drawing.SizeF(1069F, 23F);
             this.xrLabel4.StylePriority.UseFont = false;
@@ -327,6 +328,7 @@
             | DevExpress.XtraPrinting.BorderSide.Bottom)));
             this.xrTable1.LocationFloat = new DevExpress.Utils.PointFloat(0F, 0F);
             this.xrTable1.Name = "xrTable1";
+            this.xrTable1.Tag = "TableHeader";
             this.xrTable1.Padding = new DevExpress.XtraPrinting.PaddingInfo(2F, 2F, 0F, 0F, 100F);
             this.xrTable1.Rows.AddRange(new DevExpress.XtraReports.UI.XRTableRow[] {
             this.xrTableRow1,
@@ -609,6 +611,7 @@
             this.xrTable2.Font = new DevExpress.Drawing.DXFont("Times New Roman", 10F);
             this.xrTable2.LocationFloat = new DevExpress.Utils.PointFloat(0F, 0F);
             this.xrTable2.Name = "xrTable2";
+            this.xrTable2.Tag = "TableBody";
             this.xrTable2.Padding = new DevExpress.XtraPrinting.PaddingInfo(2F, 2F, 0F, 0F, 100F);
             this.xrTable2.Rows.AddRange(new DevExpress.XtraReports.UI.XRTableRow[] {
             this.xrTableRow4});

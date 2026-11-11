@@ -12,6 +12,15 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Compile Update="Infrastructure\Reports\S106HReport.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Update="Infrastructure\Reports\S106HReport.Designer.cs">
+      <DependentUpon>S106HReport.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Update="Infrastructure\Reports\S106HReport.resx">
+      <DependentUpon>S106HReport.cs</DependentUpon>
+    </EmbeddedResource>
     <Compile Update="Infrastructure\Reports\MultiColumnSplitReport.cs">
       <SubType>Component</SubType>
     </Compile>

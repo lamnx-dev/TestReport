@@ -21,6 +21,8 @@ namespace TestReport.Api.Infrastructure
 
             // Report Renderers (DevExpress)
             services.AddScoped<IReportRenderer, DevExpressMultiColumnReportRenderer>();
+            services.AddScoped<Reports.SampleReportFactory>();
+            services.AddScoped<ReportPdfRenderer>();
 
             return services;
         }
