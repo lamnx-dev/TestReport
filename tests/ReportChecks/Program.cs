@@ -147,4 +147,5 @@ using (var report = new S106HReport(data))
 var controller = new ReportsController(factory, renderer, NullLogger<ReportsController>.Instance);
 Check(controller.Render("unknown", new()) is NotFoundObjectResult, "Unknown report returns 404");
 Check(controller.Render("s11h", new() { Appearance = new() { Title = new() { FontSize = 100 } } }) is BadRequestObjectResult, "Invalid appearance returns 400");
+S90HChecks.Run();
 Console.WriteLine("All report checks passed.");

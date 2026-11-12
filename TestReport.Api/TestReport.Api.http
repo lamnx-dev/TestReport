@@ -12,3 +12,32 @@ GET {{TestReport_HostAddress}}/api/report/multi-column-base64?totalColumns=18&co
 ### Lấy dữ liệu dạng JSON thô
 GET {{TestReport_HostAddress}}/api/report/multi-column-data?totalColumns=18&columnsPerPage=6&rowCount=50
 
+### S90-H: PDF mẫu inline
+GET http://localhost:5168/api/report/s90-h-preview
+
+### S90-H: xuất PDF từ số liệu đã tính (các mã còn thiếu để trống)
+POST http://localhost:5168/api/report/s90-h-export-pdf
+Content-Type: application/json
+
+{
+  "kyBaoCao": "Năm 2026",
+  "donViTinh": "đồng",
+  "chiTieu": [
+    { "maChiTieu": "02", "soTien": 950000000 },
+    { "maChiTieu": "khau-hao-bo-sung", "soTien": 0 },
+    { "maChiTieu": "10.3", "soTien": 25000000, "ghiChu": "Quỹ phúc lợi" }
+  ]
+}
+
+### S90-H: PDF mẫu với tùy chỉnh kiểu chữ dùng trong Angular
+POST http://localhost:5168/api/reports/s90h/render
+Content-Type: application/json
+
+{
+  "appearance": {
+    "title": { "fontFamily": "Times New Roman", "fontSize": 16 },
+    "tableBody": { "fontSize": 10, "bold": false }
+  }
+}
+
+###

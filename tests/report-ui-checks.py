@@ -8,6 +8,7 @@ from pathlib import Path
 from playwright.sync_api import sync_playwright, expect
 
 sys.stdout.reconfigure(encoding="utf-8")
+BASE_URL = os.environ.get("REPORT_UI_URL", "http://127.0.0.1:4200").rstrip("/")
 
 
 def check(condition, message):
@@ -33,7 +34,7 @@ with sync_playwright() as p:
     render_requests = []
     page.on("request", lambda request: render_requests.append(request.post_data_json)
             if request.method == "POST" and "/render" in request.url else None)
-    page.goto("http://127.0.0.1:4200")
+    page.goto(BASE_URL)
     expect(page.locator("#report")).to_be_enabled()
     check(len(render_requests) == 0, "No automatic PDF generation")
     expect(page.locator("#report")).to_have_value("s11h")
@@ -89,6 +90,19 @@ with sync_playwright() as p:
     expect(page.get_by_role("button", name="Tải PDF", exact=True)).to_be_enabled(timeout=60000)
     page.screenshot(path=str(output / "report-preview.png"), full_page=True)
 
+    page.locator("#report").select_option("s90h")
+    expect(page.locator("iframe")).to_have_count(0)
+    page.locator("#title-size").fill("16")
+    with page.expect_response("**/api/reports/s90h/render", timeout=60000) as pending:
+        page.get_by_role("button", name="Tạo báo cáo", exact=True).click()
+    check(pending.value.status == 200 and pending.value.body().startswith(b"%PDF-"), "S90H actual styled PDF response")
+    expect(page.get_by_role("button", name="Tải PDF", exact=True)).to_be_enabled(timeout=60000)
+    with page.expect_download() as download:
+        page.get_by_role("button", name="Tải PDF", exact=True).click()
+    check(download.value.suggested_filename == "S90H.pdf", "S90H catalog download filename")
+    download.value.save_as(str(output / "S90H.pdf"))
+    page.screenshot(path=str(output / "s90h-preview.png"), full_page=True)
+
     # Delayed response, then switch reports: Angular must abort the request.
     held = []
     page.route("**/api/reports/*/render", lambda route: held.append(route))
@@ -117,8 +131,30 @@ with sync_playwright() as p:
         ("s106h", {"appearance": {"tableBody": {"color": "red"}}}, 400),
         ("s11h", {"appearance": None}, 200),
     ]:
-        result = context.request.post(f"http://127.0.0.1:4200/api/reports/{report_id}/render", data=payload)
+        result = context.request.post(f"{BASE_URL}/api/reports/{report_id}/render", data=payload)
         check(result.status == status, f"API {report_id} returns {status}")
+
+    preview = context.request.get(f"{BASE_URL}/api/report/s90-h-preview")
+    check(preview.status == 200 and preview.body().startswith(b"%PDF-") and
+          "inline" in preview.headers.get("content-disposition", ""), "S90H preview contract")
+    for payload, status in [
+        ({}, 200),
+        ({"chiTieu": [{"maChiTieu": "02", "soTien": 123}]}, 200),
+        ({"chiTieu": [{"maChiTieu": "unknown"}]}, 400),
+        ({"chiTieu": [{"maChiTieu": "01"}, {"maChiTieu": "01"}]}, 400),
+        ({"chiTieu": None}, 400),
+        ({"chiTieu": [None]}, 400),
+    ]:
+        result = context.request.post(f"{BASE_URL}/api/report/s90-h-export-pdf", data=payload)
+        check(result.status == status, f"S90H export input returns {status}")
+        if status == 200:
+            check(result.body().startswith(b"%PDF-") and
+                  "attachment" in result.headers.get("content-disposition", "") and
+                  "S90-H.pdf" in result.headers.get("content-disposition", ""), "S90H export contract")
+    for raw in ["null", "{", "", '{"chiTieu":[{"maChiTieu":"01","soTien":"abc"}]}']:
+        result = context.request.post(f"{BASE_URL}/api/report/s90-h-export-pdf", data=raw,
+                                      headers={"Content-Type": "application/json"})
+        check(result.status == 400, "S90H invalid JSON/body rejected")
 
     page.set_viewport_size({"width": 390, "height": 844})
     check(page.evaluate("document.documentElement.scrollWidth <= window.innerWidth"), "Mobile layout has no horizontal overflow")

@@ -18,7 +18,8 @@ public sealed class ReportsController(
         reports = new[]
         {
             new { id = "s11h", name = "S11-H — Sổ kế toán chi tiết tiền mặt" },
-            new { id = "s106h", name = "S106-H — Sổ theo dõi kinh phí hoạt động nghiệp vụ" }
+            new { id = "s106h", name = "S106-H — Sổ theo dõi kinh phí hoạt động nghiệp vụ" },
+            new { id = "s90h", name = "S90-H — Bảng xác định chênh lệch thu, chi" }
         },
         fonts = ReportAppearanceApplier.Fonts,
         minFontSize = ReportAppearanceApplier.MinFontSize,
@@ -28,7 +29,7 @@ public sealed class ReportsController(
     [HttpPost("{reportId}/render")]
     public IActionResult Render(string reportId, [FromBody] ReportRenderRequest request)
     {
-        if (reportId is not ("s11h" or "s106h"))
+        if (reportId is not ("s11h" or "s106h" or "s90h"))
             return NotFound(new { message = "Không tìm thấy báo cáo." });
         try { ReportAppearanceApplier.Validate(request.Appearance); }
         catch (ArgumentException ex) { return BadRequest(new { message = ex.Message }); }
