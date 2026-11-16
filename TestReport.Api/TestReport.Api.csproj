@@ -30,6 +30,15 @@
     <EmbeddedResource Update="Infrastructure\Reports\S62HReport.resx">
       <DependentUpon>S62HReport.cs</DependentUpon>
     </EmbeddedResource>
+    <Compile Update="Infrastructure\Reports\S55HReport.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Update="Infrastructure\Reports\S55HReport.Designer.cs">
+      <DependentUpon>S55HReport.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Update="Infrastructure\Reports\S55HReport.resx">
+      <DependentUpon>S55HReport.cs</DependentUpon>
+    </EmbeddedResource>
     <Compile Update="Infrastructure\Reports\S106HReport.cs">
       <SubType>Component</SubType>
     </Compile>

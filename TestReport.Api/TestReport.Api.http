@@ -1,5 +1,16 @@
 @TestReport_HostAddress = http://localhost:5168
 
+### S55-H: PDF mẫu sổ theo dõi thuế GTGT được miễn giảm
+POST {{TestReport_HostAddress}}/api/reports/s55h/render
+Content-Type: application/json
+
+{
+  "appearance": {
+    "title": { "fontSize": 14 },
+    "tableBody": { "fontSize": 9 }
+  }
+}
+
 ### Report catalog: S11-H, S106-H, S90-H
 GET {{TestReport_HostAddress}}/api/reports
 
