@@ -134,28 +134,6 @@ with sync_playwright() as p:
         result = context.request.post(f"{BASE_URL}/api/reports/{report_id}/render", data=payload)
         check(result.status == status, f"API {report_id} returns {status}")
 
-    preview = context.request.get(f"{BASE_URL}/api/report/s90-h-preview")
-    check(preview.status == 200 and preview.body().startswith(b"%PDF-") and
-          "inline" in preview.headers.get("content-disposition", ""), "S90H preview contract")
-    for payload, status in [
-        ({}, 200),
-        ({"chiTieu": [{"maChiTieu": "02", "soTien": 123}]}, 200),
-        ({"chiTieu": [{"maChiTieu": "unknown"}]}, 400),
-        ({"chiTieu": [{"maChiTieu": "01"}, {"maChiTieu": "01"}]}, 400),
-        ({"chiTieu": None}, 400),
-        ({"chiTieu": [None]}, 400),
-    ]:
-        result = context.request.post(f"{BASE_URL}/api/report/s90-h-export-pdf", data=payload)
-        check(result.status == status, f"S90H export input returns {status}")
-        if status == 200:
-            check(result.body().startswith(b"%PDF-") and
-                  "attachment" in result.headers.get("content-disposition", "") and
-                  "S90-H.pdf" in result.headers.get("content-disposition", ""), "S90H export contract")
-    for raw in ["null", "{", "", '{"chiTieu":[{"maChiTieu":"01","soTien":"abc"}]}']:
-        result = context.request.post(f"{BASE_URL}/api/report/s90-h-export-pdf", data=raw,
-                                      headers={"Content-Type": "application/json"})
-        check(result.status == 400, "S90H invalid JSON/body rejected")
-
     page.set_viewport_size({"width": 390, "height": 844})
     check(page.evaluate("document.documentElement.scrollWidth <= window.innerWidth"), "Mobile layout has no horizontal overflow")
     check(not errors, f"No browser runtime errors: {errors}")

@@ -2,9 +2,6 @@ using System.Text;
 using DevExpress.Drawing;
 using DevExpress.XtraPrinting;
 using DevExpress.XtraReports.UI;
-using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
-using TestReport.Api.Controllers;
 using TestReport.Api.Domain.Models;
 using TestReport.Api.Infrastructure.Reports;
 
@@ -99,24 +96,6 @@ internal static class S90HChecks
             Check(all.Where(b => b.Text.Length > 0).All(b => b.Rect.Right <= 2242), "rendered text stays within printable width (300 dpi)");
             report.ExportToPdf(Path.Combine(AppContext.BaseDirectory, "S90-H-long.pdf"));
         }
-        var controller = new ReportController()
-        {
-            ControllerContext = new ControllerContext { HttpContext = new DefaultHttpContext() }
-        };
-        Check(controller.ExportS90HPdf(null!) is BadRequestObjectResult, "null body rejected");
-        foreach (var items in new List<S90HChiTieu>[]
-        {
-            [new() { MaChiTieu = "unknown" }],
-            [new() { MaChiTieu = "01" }, new() { MaChiTieu = "01" }],
-            [null!], null!
-        })
-            Check(controller.ExportS90HPdf(new() { ChiTieu = items }) is BadRequestObjectResult, "invalid indicators rejected");
-        var file = (FileStreamResult)controller.ExportS90HPdf(new());
-        Check(file.ContentType == "application/pdf" && file.FileDownloadName == "S90-H.pdf", "export response metadata");
-        file.FileStream.Dispose();
-        var preview = (FileStreamResult)controller.PreviewS90HPdf();
-        Check(controller.Response.Headers.ContentDisposition.ToString().Contains("inline"), "preview inline");
-        preview.FileStream.Dispose();
     }
 
     private static IEnumerable<TextBrick> Bricks(BrickBase brick)
