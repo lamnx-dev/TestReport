@@ -128,7 +128,7 @@
     <div class="preview-toolbar">
       <div>
         <span class="eyebrow">BẢN IN</span>
-        <h2>{{ reportId === 's11h' ? 'S11-H' : 'S106-H' }}</h2>
+        <h2>{{ reportId.toUpperCase().replace('H', '-H') }}</h2>
       </div>
       <div class="pdf-actions">
         <button type="button" class="secondary" [disabled]="!canUsePdf()" (click)="download()">

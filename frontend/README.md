@@ -1,6 +1,6 @@
 # FE báo cáo
 
-Angular: chọn S11-H/S106-H, tùy chỉnh style ba vùng và xem PDF. Không có bảng dữ liệu.
+Angular: chọn S11-H/S106-H/S90-H/S62-H, tùy chỉnh style ba vùng và xem PDF. Không có bảng dữ liệu.
 
 1. Chạy BE tại http://localhost:5168: `dotnet run --project TestReport.Api --launch-profile http` từ thư mục gốc.
 2. Tại `frontend`, chạy `npm install` nếu chưa có dependency, rồi `npm start`.
