@@ -13,18 +13,21 @@ public partial class S90HReport : DevExpress.XtraReports.UI.XtraReport
         var rows = data.CreateRows();
         InitializeComponent();
         DataSource = rows;
-        lblDonViCapTren.Text = data.DonViCapTren;
-        lblDonViBaoCao.Text = data.DonViBaoCao;
-        lblCanCu.Text = data.CanCu;
-        lblKyBaoCao.Text = data.KyBaoCao;
-        lblDonViTinh.Text = "Đơn vị tính: " + data.DonViTinh;
-        lblNgayMoSo.Text = "Ngày mở sổ: " + (data.NgayMoSo?.ToString("dd'/'MM'/'yyyy", CultureInfo.InvariantCulture) ?? "……………….");
-        lblNgayKy.Text = data.NgayKy?.ToString("'Ngày 'dd' tháng 'MM' năm 'yyyy", CultureInfo.InvariantCulture) ?? "Ngày … tháng … năm …";
-        lblChucDanhKeToan.Text = data.ChucDanhKeToan;
-        lblChucDanhKeToanTruong.Text = data.ChucDanhKeToanTruong;
-        lblChucDanhThuTruong.Text = data.ChucDanhThuTruong;
-        lblTenKeToan.Text = data.KeToan;
-        lblTenKeToanTruong.Text = data.KeToanTruong;
-        lblTenThuTruong.Text = data.ThuTruongDonVi;
+        ReportTextApplier.Apply(this, new Dictionary<string, string>
+        {
+            ["DonViCapTren"] = data.DonViCapTren,
+            ["DonViBaoCao"] = data.DonViBaoCao,
+            ["CanCu"] = data.CanCu,
+            ["KyBaoCao"] = data.KyBaoCao,
+            ["DonViTinh"] = "Đơn vị tính: " + data.DonViTinh,
+            ["NgayMoSo"] = "Ngày mở sổ: " + (data.NgayMoSo?.ToString("dd'/'MM'/'yyyy", CultureInfo.InvariantCulture) ?? "………………."),
+            ["NgayKy"] = data.NgayKy?.ToString("'Ngày 'dd' tháng 'MM' năm 'yyyy", CultureInfo.InvariantCulture) ?? "Ngày … tháng … năm …",
+            ["ChucDanhKeToan"] = data.ChucDanhKeToan,
+            ["ChucDanhKeToanTruong"] = data.ChucDanhKeToanTruong,
+            ["ChucDanhThuTruong"] = data.ChucDanhThuTruong,
+            ["KeToan"] = data.KeToan,
+            ["KeToanTruong"] = data.KeToanTruong,
+            ["ThuTruongDonVi"] = data.ThuTruongDonVi
+        });
     }
 }

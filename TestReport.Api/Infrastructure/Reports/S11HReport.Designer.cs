@@ -1,6 +1,6 @@
 ﻿namespace TestReport.Api.Infrastructure.Reports
 {
-    partial class S11_H_Report
+    partial class S11HReport
     {
         /// <summary>
         /// Required designer variable.
@@ -132,6 +132,7 @@
             this.xrLabel5.LocationFloat = new DevExpress.Utils.PointFloat(0F, 113.1667F);
             this.xrLabel5.Multiline = true;
             this.xrLabel5.Name = "xrLabel5";
+            this.xrLabel5.Tag = "KyBaoCao";
             this.xrLabel5.Padding = new DevExpress.XtraPrinting.PaddingInfo(2F, 2F, 0F, 0F, 100F);
             this.xrLabel5.SizeF = new System.Drawing.SizeF(1069F, 23F);
             this.xrLabel5.StylePriority.UseFont = false;
@@ -172,6 +173,7 @@
             this.xrLabel2.LocationFloat = new DevExpress.Utils.PointFloat(0F, 23.00001F);
             this.xrLabel2.Multiline = true;
             this.xrLabel2.Name = "xrLabel2";
+            this.xrLabel2.Tag = "DonViBaoCao";
             this.xrLabel2.Padding = new DevExpress.XtraPrinting.PaddingInfo(2F, 2F, 0F, 0F, 100F);
             this.xrLabel2.SizeF = new System.Drawing.SizeF(351.6667F, 23F);
             this.xrLabel2.StylePriority.UseFont = false;
@@ -185,6 +187,7 @@
             this.xrLabel1.LocationFloat = new DevExpress.Utils.PointFloat(0F, 0F);
             this.xrLabel1.Multiline = true;
             this.xrLabel1.Name = "xrLabel1";
+            this.xrLabel1.Tag = "DonViCapTren";
             this.xrLabel1.Padding = new DevExpress.XtraPrinting.PaddingInfo(2F, 2F, 0F, 0F, 100F);
             this.xrLabel1.SizeF = new System.Drawing.SizeF(351.6667F, 23F);
             this.xrLabel1.StylePriority.UseFont = false;
@@ -752,7 +755,7 @@
             this.xrTableCell37.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleLeft;
             this.xrTableCell37.Weight = 1.3535945297999208D;
             // 
-            // S11_H_Report
+            // S11HReport
             // 
             this.Bands.AddRange(new DevExpress.XtraReports.UI.Band[] {
             this.TopMargin,
@@ -770,6 +773,7 @@
             this.PageHeightF = 826.7717F;
             this.PageWidthF = 1169.291F;
             this.PaperKind = DevExpress.Drawing.Printing.DXPaperKind.A4;
+            this.DisplayName = "S11-H";
             this.Version = "25.2";
             ((System.ComponentModel.ISupportInitialize)(this.xrTable1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.objectDataSource1)).EndInit();

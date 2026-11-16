@@ -20,28 +20,32 @@ public partial class S106HReport : DevExpress.XtraReports.UI.XtraReport
         DetailReport.DataSource = DataSource;
         DetailReport1.DataSource = DataSource;
         DetailReport2.DataSource = DataSource;
-        ApplyLabels(data);
+        ApplyTexts(data);
     }
 
-    private void ApplyLabels(S106HReportData data)
+    private void ApplyTexts(S106HReportData data)
     {
-        xrLabel1.Text = data.DonViCapTren;
-        xrLabel2.Text = data.DonViBaoCao;
-        xrLabel6.Text = data.KyBaoCao;
-        xrLabel7.Text = data.NgayMoSo is { } opened
-            ? "Ngày mở sổ: " + opened.ToString("dd'/'MM'/'yyyy", CultureInfo.InvariantCulture)
-            : "Ngày mở sổ: ……………….";
-        xrLabel8.Text = data.NgayKy is { } signed
-            ? signed.ToString("'Ngày 'dd' tháng 'MM' năm 'yyyy", CultureInfo.InvariantCulture)
-            : "Ngày … tháng … năm …";
-        xrLabel11.Text = data.KeToan;
-        xrLabel14.Text = data.KeToanTruong;
-        xrLabel17.Text = data.ThuTruongDonVi;
+        ReportTextApplier.Apply(this, new Dictionary<string, string>
+        {
+            ["DonViCapTren"] = data.DonViCapTren,
+            ["DonViBaoCao"] = data.DonViBaoCao,
+            ["KyBaoCao"] = data.KyBaoCao,
+            ["NgayMoSo"] = data.NgayMoSo is { } opened
+                ? "Ngày mở sổ: " + opened.ToString("dd'/'MM'/'yyyy", CultureInfo.InvariantCulture)
+                : "Ngày mở sổ: ……………….",
+            ["NgayKy"] = data.NgayKy is { } signed
+                ? signed.ToString("'Ngày 'dd' tháng 'MM' năm 'yyyy", CultureInfo.InvariantCulture)
+                : "Ngày … tháng … năm …",
+            ["KeToan"] = data.KeToan,
+            ["KeToanTruong"] = data.KeToanTruong,
+            ["ThuTruongDonVi"] = data.ThuTruongDonVi
+        });
     }
 
     private void GroupHeader5_BeforePrint(object sender, CancelEventArgs e)
     {
-        xrLabel20.Text = DetailReport1.GetCurrentColumnValue(nameof(S106HUsedRow.TenTieuMuc))?.ToString() ?? "";
-        e.Cancel = string.IsNullOrEmpty(xrLabel20.Text);
+        var tenTieuMuc = DetailReport1.GetCurrentColumnValue(nameof(S106HUsedRow.TenTieuMuc))?.ToString() ?? "";
+        ReportTextApplier.Apply(this, new Dictionary<string, string> { ["TenTieuMuc"] = tenTieuMuc });
+        e.Cancel = string.IsNullOrEmpty(tenTieuMuc);
     }
 }

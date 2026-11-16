@@ -217,6 +217,7 @@ namespace TestReport.Api.Infrastructure.Reports
             this.xrLabel1.Font = new DevExpress.Drawing.DXFont("Times New Roman", 10F);
             this.xrLabel1.LocationFloat = new DevExpress.Utils.PointFloat(0F, 0F);
             this.xrLabel1.Name = "xrLabel1";
+            this.xrLabel1.Tag = "DonViCapTren";
             this.xrLabel1.SizeF = new System.Drawing.SizeF(530F, 22F);
             this.xrLabel1.StylePriority.UseFont = false;
             this.xrLabel1.StylePriority.UseTextAlignment = false;
@@ -228,6 +229,7 @@ namespace TestReport.Api.Infrastructure.Reports
             this.xrLabel2.Font = new DevExpress.Drawing.DXFont("Times New Roman", 10F, DevExpress.Drawing.DXFontStyle.Bold);
             this.xrLabel2.LocationFloat = new DevExpress.Utils.PointFloat(0F, 24F);
             this.xrLabel2.Name = "xrLabel2";
+            this.xrLabel2.Tag = "DonViBaoCao";
             this.xrLabel2.SizeF = new System.Drawing.SizeF(530F, 24F);
             this.xrLabel2.StylePriority.UseTextAlignment = false;
             this.xrLabel2.Text = "BẢO HIỂM XÃ HỘI …....";
@@ -266,6 +268,7 @@ namespace TestReport.Api.Infrastructure.Reports
             this.xrLabel6.Font = new DevExpress.Drawing.DXFont("Times New Roman", 10F);
             this.xrLabel6.LocationFloat = new DevExpress.Utils.PointFloat(0F, 104F);
             this.xrLabel6.Name = "xrLabel6";
+            this.xrLabel6.Tag = "KyBaoCao";
             this.xrLabel6.SizeF = new System.Drawing.SizeF(1089F, 22F);
             this.xrLabel6.Text = "Tháng/Quý/Năm …";
             this.xrLabel6.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter;
@@ -301,6 +304,7 @@ namespace TestReport.Api.Infrastructure.Reports
             this.xrLabel7.Font = new DevExpress.Drawing.DXFont("Times New Roman", 9F);
             this.xrLabel7.LocationFloat = new DevExpress.Utils.PointFloat(0F, 30F);
             this.xrLabel7.Name = "xrLabel7";
+            this.xrLabel7.Tag = "NgayMoSo";
             this.xrLabel7.SizeF = new System.Drawing.SizeF(500F, 22F);
             this.xrLabel7.Text = "Ngày mở sổ: ……………….";
             this.xrLabel7.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleLeft;
@@ -310,6 +314,7 @@ namespace TestReport.Api.Infrastructure.Reports
             this.xrLabel8.Font = new DevExpress.Drawing.DXFont("Times New Roman", 9F);
             this.xrLabel8.LocationFloat = new DevExpress.Utils.PointFloat(726F, 56F);
             this.xrLabel8.Name = "xrLabel8";
+            this.xrLabel8.Tag = "NgayKy";
             this.xrLabel8.SizeF = new System.Drawing.SizeF(363F, 22F);
             this.xrLabel8.Text = "Ngày … tháng … năm …";
             this.xrLabel8.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter;
@@ -337,6 +342,7 @@ namespace TestReport.Api.Infrastructure.Reports
             this.xrLabel11.Font = new DevExpress.Drawing.DXFont("Times New Roman", 10F);
             this.xrLabel11.LocationFloat = new DevExpress.Utils.PointFloat(0F, 154F);
             this.xrLabel11.Name = "xrLabel11";
+            this.xrLabel11.Tag = "KeToan";
             this.xrLabel11.SizeF = new System.Drawing.SizeF(363F, 22F);
             this.xrLabel11.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter;
             // 
@@ -363,6 +369,7 @@ namespace TestReport.Api.Infrastructure.Reports
             this.xrLabel14.Font = new DevExpress.Drawing.DXFont("Times New Roman", 10F);
             this.xrLabel14.LocationFloat = new DevExpress.Utils.PointFloat(363F, 154F);
             this.xrLabel14.Name = "xrLabel14";
+            this.xrLabel14.Tag = "KeToanTruong";
             this.xrLabel14.SizeF = new System.Drawing.SizeF(363F, 22F);
             this.xrLabel14.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter;
             // 
@@ -389,6 +396,7 @@ namespace TestReport.Api.Infrastructure.Reports
             this.xrLabel17.Font = new DevExpress.Drawing.DXFont("Times New Roman", 10F);
             this.xrLabel17.LocationFloat = new DevExpress.Utils.PointFloat(726F, 154F);
             this.xrLabel17.Name = "xrLabel17";
+            this.xrLabel17.Tag = "ThuTruongDonVi";
             this.xrLabel17.SizeF = new System.Drawing.SizeF(363F, 22F);
             this.xrLabel17.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter;
             // 
@@ -1567,6 +1575,7 @@ namespace TestReport.Api.Infrastructure.Reports
             this.xrLabel20.Font = new DevExpress.Drawing.DXFont("Times New Roman", 9F, DevExpress.Drawing.DXFontStyle.Bold);
             this.xrLabel20.LocationFloat = new DevExpress.Utils.PointFloat(0F, 0F);
             this.xrLabel20.Name = "xrLabel20";
+            this.xrLabel20.Tag = "TenTieuMuc";
             this.xrLabel20.SizeF = new System.Drawing.SizeF(1089F, 28F);
             this.xrLabel20.StylePriority.UseBorders = false;
             this.xrLabel20.Text = "Mã tiểu mục chi: …";
@@ -1828,6 +1837,7 @@ namespace TestReport.Api.Infrastructure.Reports
             this.PageWidthF = 1169.291F;
             this.PaperKind = DevExpress.Drawing.Printing.DXPaperKind.A4;
             this.RequestParameters = false;
+            this.DisplayName = "S106-H";
             this.Version = "25.2";
             ((System.ComponentModel.ISupportInitialize)(this.objectDataSource1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.xrTable1)).EndInit();

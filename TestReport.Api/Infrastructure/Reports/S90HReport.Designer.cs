@@ -104,6 +104,7 @@ partial class S90HReport
             this.lblDonViCapTren.Font = new DevExpress.Drawing.DXFont("Times New Roman", 10F, DevExpress.Drawing.DXFontStyle.Bold);
             this.lblDonViCapTren.LocationFloat = new DevExpress.Utils.PointFloat(0F, 0F);
             this.lblDonViCapTren.Name = "lblDonViCapTren";
+            this.lblDonViCapTren.Tag = "DonViCapTren";
             this.lblDonViCapTren.SizeF = new System.Drawing.SizeF(365F, 20F);
             this.lblDonViCapTren.Text = "BẢO HIỂM XÃ HỘI VIỆT NAM";
             this.lblDonViCapTren.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopLeft;
@@ -113,6 +114,7 @@ partial class S90HReport
             this.lblDonViBaoCao.Font = new DevExpress.Drawing.DXFont("Times New Roman", 10F, DevExpress.Drawing.DXFontStyle.Bold);
             this.lblDonViBaoCao.LocationFloat = new DevExpress.Utils.PointFloat(0F, 22F);
             this.lblDonViBaoCao.Name = "lblDonViBaoCao";
+            this.lblDonViBaoCao.Tag = "DonViBaoCao";
             this.lblDonViBaoCao.SizeF = new System.Drawing.SizeF(365F, 30F);
             this.lblDonViBaoCao.Text = "BẢO HIỂM XÃ HỘI …";
             this.lblDonViBaoCao.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopLeft;
@@ -131,6 +133,7 @@ partial class S90HReport
             this.lblCanCu.Font = new DevExpress.Drawing.DXFont("Times New Roman", 9F);
             this.lblCanCu.LocationFloat = new DevExpress.Utils.PointFloat(380F, 22F);
             this.lblCanCu.Name = "lblCanCu";
+            this.lblCanCu.Tag = "CanCu";
             this.lblCanCu.SizeF = new System.Drawing.SizeF(367F, 54F);
             this.lblCanCu.Text = "(Ban hành kèm theo Công văn số 153/BHXH-TCKT ngày 14/01/2026 của BHXH Việt Nam)";
             this.lblCanCu.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopCenter;
@@ -150,6 +153,7 @@ partial class S90HReport
             this.lblKyBaoCao.Font = new DevExpress.Drawing.DXFont("Times New Roman", 11F);
             this.lblKyBaoCao.LocationFloat = new DevExpress.Utils.PointFloat(0F, 124F);
             this.lblKyBaoCao.Name = "lblKyBaoCao";
+            this.lblKyBaoCao.Tag = "KyBaoCao";
             this.lblKyBaoCao.SizeF = new System.Drawing.SizeF(747F, 24F);
             this.lblKyBaoCao.Text = "Tháng/Quý/Năm";
             this.lblKyBaoCao.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter;
@@ -159,6 +163,7 @@ partial class S90HReport
             this.lblDonViTinh.Font = new DevExpress.Drawing.DXFont("Times New Roman", 10F);
             this.lblDonViTinh.LocationFloat = new DevExpress.Utils.PointFloat(450F, 160F);
             this.lblDonViTinh.Name = "lblDonViTinh";
+            this.lblDonViTinh.Tag = "DonViTinh";
             this.lblDonViTinh.SizeF = new System.Drawing.SizeF(297F, 20F);
             this.lblDonViTinh.Text = "Đơn vị tính: đồng";
             this.lblDonViTinh.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleRight;
@@ -406,6 +411,7 @@ partial class S90HReport
             this.lblNgayMoSo.Font = new DevExpress.Drawing.DXFont("Times New Roman", 10F);
             this.lblNgayMoSo.LocationFloat = new DevExpress.Utils.PointFloat(0F, 23F);
             this.lblNgayMoSo.Name = "lblNgayMoSo";
+            this.lblNgayMoSo.Tag = "NgayMoSo";
             this.lblNgayMoSo.SizeF = new System.Drawing.SizeF(747F, 20F);
             this.lblNgayMoSo.Text = "Ngày mở sổ: ……………….";
             this.lblNgayMoSo.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopLeft;
@@ -415,6 +421,7 @@ partial class S90HReport
             this.lblNgayKy.Font = new DevExpress.Drawing.DXFont("Times New Roman", 10F);
             this.lblNgayKy.LocationFloat = new DevExpress.Utils.PointFloat(480F, 48F);
             this.lblNgayKy.Name = "lblNgayKy";
+            this.lblNgayKy.Tag = "NgayKy";
             this.lblNgayKy.SizeF = new System.Drawing.SizeF(267F, 20F);
             this.lblNgayKy.Text = "Ngày … tháng … năm …";
             this.lblNgayKy.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter;
@@ -424,6 +431,7 @@ partial class S90HReport
             this.lblChucDanhKeToan.Font = new DevExpress.Drawing.DXFont("Times New Roman", 10F, DevExpress.Drawing.DXFontStyle.Bold);
             this.lblChucDanhKeToan.LocationFloat = new DevExpress.Utils.PointFloat(0F, 73F);
             this.lblChucDanhKeToan.Name = "lblChucDanhKeToan";
+            this.lblChucDanhKeToan.Tag = "ChucDanhKeToan";
             this.lblChucDanhKeToan.SizeF = new System.Drawing.SizeF(245F, 24F);
             this.lblChucDanhKeToan.Text = "KẾ TOÁN";
             this.lblChucDanhKeToan.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopCenter;
@@ -442,6 +450,7 @@ partial class S90HReport
             this.lblTenKeToan.Font = new DevExpress.Drawing.DXFont("Times New Roman", 10F, DevExpress.Drawing.DXFontStyle.Bold);
             this.lblTenKeToan.LocationFloat = new DevExpress.Utils.PointFloat(0F, 148F);
             this.lblTenKeToan.Name = "lblTenKeToan";
+            this.lblTenKeToan.Tag = "KeToan";
             this.lblTenKeToan.SizeF = new System.Drawing.SizeF(245F, 24F);
             this.lblTenKeToan.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopCenter;
             // 
@@ -450,6 +459,7 @@ partial class S90HReport
             this.lblChucDanhKeToanTruong.Font = new DevExpress.Drawing.DXFont("Times New Roman", 10F, DevExpress.Drawing.DXFontStyle.Bold);
             this.lblChucDanhKeToanTruong.LocationFloat = new DevExpress.Utils.PointFloat(245F, 73F);
             this.lblChucDanhKeToanTruong.Name = "lblChucDanhKeToanTruong";
+            this.lblChucDanhKeToanTruong.Tag = "ChucDanhKeToanTruong";
             this.lblChucDanhKeToanTruong.SizeF = new System.Drawing.SizeF(245F, 24F);
             this.lblChucDanhKeToanTruong.Text = "KẾ TOÁN TRƯỞNG";
             this.lblChucDanhKeToanTruong.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopCenter;
@@ -468,6 +478,7 @@ partial class S90HReport
             this.lblTenKeToanTruong.Font = new DevExpress.Drawing.DXFont("Times New Roman", 10F, DevExpress.Drawing.DXFontStyle.Bold);
             this.lblTenKeToanTruong.LocationFloat = new DevExpress.Utils.PointFloat(245F, 148F);
             this.lblTenKeToanTruong.Name = "lblTenKeToanTruong";
+            this.lblTenKeToanTruong.Tag = "KeToanTruong";
             this.lblTenKeToanTruong.SizeF = new System.Drawing.SizeF(245F, 24F);
             this.lblTenKeToanTruong.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopCenter;
             // 
@@ -476,6 +487,7 @@ partial class S90HReport
             this.lblChucDanhThuTruong.Font = new DevExpress.Drawing.DXFont("Times New Roman", 10F, DevExpress.Drawing.DXFontStyle.Bold);
             this.lblChucDanhThuTruong.LocationFloat = new DevExpress.Utils.PointFloat(490F, 73F);
             this.lblChucDanhThuTruong.Name = "lblChucDanhThuTruong";
+            this.lblChucDanhThuTruong.Tag = "ChucDanhThuTruong";
             this.lblChucDanhThuTruong.SizeF = new System.Drawing.SizeF(257F, 24F);
             this.lblChucDanhThuTruong.Text = "THỦ TRƯỞNG ĐƠN VỊ";
             this.lblChucDanhThuTruong.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopCenter;
@@ -494,6 +506,7 @@ partial class S90HReport
             this.lblTenThuTruong.Font = new DevExpress.Drawing.DXFont("Times New Roman", 10F, DevExpress.Drawing.DXFontStyle.Bold);
             this.lblTenThuTruong.LocationFloat = new DevExpress.Utils.PointFloat(490F, 148F);
             this.lblTenThuTruong.Name = "lblTenThuTruong";
+            this.lblTenThuTruong.Tag = "ThuTruongDonVi";
             this.lblTenThuTruong.SizeF = new System.Drawing.SizeF(257F, 24F);
             this.lblTenThuTruong.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopCenter;
             // 
@@ -520,6 +533,7 @@ partial class S90HReport
             this.PageHeightF = 1169.291F;
             this.PageWidthF = 826.7717F;
             this.PaperKind = DevExpress.Drawing.Printing.DXPaperKind.A4;
+            this.DisplayName = "S90-H";
             this.Version = "25.2";
             ((System.ComponentModel.ISupportInitialize)(this.tblHeader)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.tblBody)).EndInit();
