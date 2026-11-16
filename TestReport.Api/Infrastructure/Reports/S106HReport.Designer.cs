@@ -431,12 +431,12 @@ namespace TestReport.Api.Infrastructure.Reports
             this.xrTable1.KeepTogether = true;
             this.xrTable1.LocationFloat = new DevExpress.Utils.PointFloat(0F, 28F);
             this.xrTable1.Name = "xrTable1";
-            this.xrTable1.Tag = "TableHeader";
             this.xrTable1.Rows.AddRange(new DevExpress.XtraReports.UI.XRTableRow[] {
             this.xrTableRow1,
             this.xrTableRow2,
             this.xrTableRow3});
             this.xrTable1.SizeF = new System.Drawing.SizeF(1089F, 102F);
+            this.xrTable1.Tag = "TableHeader";
             // 
             // xrTableRow1
             // 
@@ -837,11 +837,11 @@ namespace TestReport.Api.Infrastructure.Reports
             this.xrTable2.KeepTogether = true;
             this.xrTable2.LocationFloat = new DevExpress.Utils.PointFloat(0F, 0F);
             this.xrTable2.Name = "xrTable2";
-            this.xrTable2.Tag = "TableBody";
             this.xrTable2.Rows.AddRange(new DevExpress.XtraReports.UI.XRTableRow[] {
             this.xrTableRow4});
             this.xrTable2.SizeF = new System.Drawing.SizeF(1089F, 30F);
             this.xrTable2.StylePriority.UseBorders = false;
+            this.xrTable2.Tag = "TableBody";
             // 
             // xrTableRow4
             // 
@@ -1113,12 +1113,12 @@ namespace TestReport.Api.Infrastructure.Reports
             this.xrTable3.KeepTogether = true;
             this.xrTable3.LocationFloat = new DevExpress.Utils.PointFloat(0F, 28F);
             this.xrTable3.Name = "xrTable3";
-            this.xrTable3.Tag = "TableHeader";
             this.xrTable3.Rows.AddRange(new DevExpress.XtraReports.UI.XRTableRow[] {
             this.xrTableRow5,
             this.xrTableRow6,
             this.xrTableRow7});
             this.xrTable3.SizeF = new System.Drawing.SizeF(1089F, 102F);
+            this.xrTable3.Tag = "TableHeader";
             // 
             // xrTableRow5
             // 
@@ -1398,11 +1398,11 @@ namespace TestReport.Api.Infrastructure.Reports
             this.xrTable4.KeepTogether = true;
             this.xrTable4.LocationFloat = new DevExpress.Utils.PointFloat(0F, 0F);
             this.xrTable4.Name = "xrTable4";
-            this.xrTable4.Tag = "TableBody";
             this.xrTable4.Rows.AddRange(new DevExpress.XtraReports.UI.XRTableRow[] {
             this.xrTableRow8});
             this.xrTable4.SizeF = new System.Drawing.SizeF(1089F, 30F);
             this.xrTable4.StylePriority.UseBorders = false;
+            this.xrTable4.Tag = "TableBody";
             // 
             // xrTableRow8
             // 
@@ -1559,7 +1559,6 @@ namespace TestReport.Api.Infrastructure.Reports
             this.GroupHeader5.HeightF = 28F;
             this.GroupHeader5.Name = "GroupHeader5";
             this.GroupHeader5.RepeatEveryPage = true;
-            this.GroupHeader5.BeforePrint += this.GroupHeader5_BeforePrint;
             // 
             // xrLabel20
             // 
@@ -1611,10 +1610,10 @@ namespace TestReport.Api.Infrastructure.Reports
             this.xrTable5.KeepTogether = true;
             this.xrTable5.LocationFloat = new DevExpress.Utils.PointFloat(0F, 28F);
             this.xrTable5.Name = "xrTable5";
-            this.xrTable5.Tag = "TableHeader";
             this.xrTable5.Rows.AddRange(new DevExpress.XtraReports.UI.XRTableRow[] {
             this.xrTableRow9});
             this.xrTable5.SizeF = new System.Drawing.SizeF(1089F, 56F);
+            this.xrTable5.Tag = "TableHeader";
             // 
             // xrTableRow9
             // 
@@ -1704,11 +1703,11 @@ namespace TestReport.Api.Infrastructure.Reports
             this.xrTable6.KeepTogether = true;
             this.xrTable6.LocationFloat = new DevExpress.Utils.PointFloat(0F, 0F);
             this.xrTable6.Name = "xrTable6";
-            this.xrTable6.Tag = "TableBody";
             this.xrTable6.Rows.AddRange(new DevExpress.XtraReports.UI.XRTableRow[] {
             this.xrTableRow10});
             this.xrTable6.SizeF = new System.Drawing.SizeF(1089F, 30F);
             this.xrTable6.StylePriority.UseBorders = false;
+            this.xrTable6.Tag = "TableBody";
             // 
             // xrTableRow10
             // 
