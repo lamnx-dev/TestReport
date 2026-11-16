@@ -1,4 +1,3 @@
-using TestReport.Api.Application;
 using TestReport.Api.Infrastructure;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -17,8 +16,7 @@ builder.Services.AddCors(options =>
 
 builder.Services.AddControllers();
 
-// Clean Architecture Services Registration
-builder.Services.AddApplicationServices();
+// Report services registration
 builder.Services.AddInfrastructureServices();
 
 // Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi

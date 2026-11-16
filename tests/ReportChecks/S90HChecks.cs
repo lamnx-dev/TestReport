@@ -99,7 +99,7 @@ internal static class S90HChecks
             Check(all.Where(b => b.Text.Length > 0).All(b => b.Rect.Right <= 2242), "rendered text stays within printable width (300 dpi)");
             report.ExportToPdf(Path.Combine(AppContext.BaseDirectory, "S90-H-long.pdf"));
         }
-        var controller = new ReportController(null!, null!)
+        var controller = new ReportController()
         {
             ControllerContext = new ControllerContext { HttpContext = new DefaultHttpContext() }
         };
