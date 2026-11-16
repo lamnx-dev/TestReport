@@ -1,0 +1,35 @@
+# Checklist Báo Cáo Kế Toán (Thông tư 24/2024/TT-BTC)
+
+- [ ] S01-H: Nhật ký - sổ cái
+- [ ] S02a-H: Chứng từ ghi sổ
+- [ ] S02b-H: Sổ đăng ký chứng từ ghi sổ
+- [ ] S02c-H: Sổ cái (Chứng từ ghi sổ)
+- [ ] S05-H: Bảng cân đối số phát sinh
+- [x] S11-H: Sổ kế toán chi tiết tiền mặt
+- [ ] S11b-H: Sổ quỹ tiền mặt
+- [x] S12-H: Sổ tiền gửi ngân hàng, kho bạc
+- [ ] S14-H: Bảng kiểm kê quỹ tiền mặt
+- [ ] S21-H: Sổ kho
+- [ ] S22-H: Sổ chi tiết nguyên liệu, vật liệu, CCDC, sản phẩm, hàng hóa
+- [ ] S23-H: Bảng tổng hợp chi tiết NVL, CCDC, sản phẩm, hàng hóa
+- [ ] S24-H: Sổ tài sản cố định của đơn vị
+- [ ] S25-H: Thẻ tài sản cố định
+- [ ] S26-H: Sổ theo dõi tài sản cố định và CCDC tại nơi sử dụng
+- [ ] S27-H: Sổ chi phí đầu tư xây dựng
+- [ ] S31-H: Sổ chi tiết phải thu kinh phí được cấp
+- [ ] S32-H: Sổ theo dõi chi phí trả trước
+- [ ] S33-H: Sổ chi tiết các khoản phải thu, phải trả
+- [ ] S34-H: Sổ chi tiết thanh toán với người mua, người bán
+- [ ] S36-H: Sổ chi tiết tài sản thừa chờ xử lý
+- [ ] S37-H: Sổ chi tiết tài sản thiếu chờ xử lý
+- [ ] S38-H: Sổ chi tiết các tài khoản
+- [ ] S51-H: Sổ chi tiết doanh thu
+- [ ] S52-H: Sổ chi tiết doanh thu sản xuất kinh doanh, dịch vụ
+- [ ] S53-H: Sổ theo dõi thuế GTGT
+- [ ] S54-H: Sổ chi tiết thuế GTGT được hoàn lại
+- [x] S55-H: Sổ chi tiết thuế GTGT được miễn giảm
+- [ ] S61-H: Sổ chi tiết chi phí
+- [x] S62-H: Sổ chi tiết chi phí sản xuất kinh doanh dịch vụ dở dang
+- [x] S90-H: Bảng xác định chênh lệch thu, chi
+- [ ] S101-H: Sổ theo dõi dự toán
+- [x] S106-H: Sổ theo dõi kinh phí hoạt động nghiệp vụ

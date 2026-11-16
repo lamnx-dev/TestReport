@@ -1,5 +1,16 @@
 @TestReport_HostAddress = http://localhost:5168
 
+### S12-H: PDF mẫu sổ tiền gửi ngân hàng, kho bạc
+POST {{TestReport_HostAddress}}/api/reports/s12h/render
+Content-Type: application/json
+
+{
+  "appearance": {
+    "title": { "fontSize": 14 },
+    "tableBody": { "fontSize": 9 }
+  }
+}
+
 ### S55-H: PDF mẫu sổ theo dõi thuế GTGT được miễn giảm
 POST {{TestReport_HostAddress}}/api/reports/s55h/render
 Content-Type: application/json
