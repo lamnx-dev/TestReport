@@ -13,6 +13,7 @@ public sealed class SampleReportFactory
         "s106h" => new S106HReport(S106HReportData.CreateSample()),
         "s101h" => new S101HReport(S101HReportData.CreateSample()),
         "s90h" => new S90HReport(S90HReportData.CreateSample()),
+        "s61h" => new S61HReport(S61HReportData.CreateSample()),
         "s62h" => new S62HReport(S62HReportData.CreateSample()),
         _ => null
     };

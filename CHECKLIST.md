@@ -28,7 +28,7 @@
 - [ ] S53-H: Sổ theo dõi thuế GTGT
 - [ ] S54-H: Sổ chi tiết thuế GTGT được hoàn lại
 - [x] S55-H: Sổ chi tiết thuế GTGT được miễn giảm
-- [ ] S61-H: Sổ chi tiết chi phí
+- [x] S61-H: Sổ chi tiết chi phí
 - [x] S62-H: Sổ chi tiết chi phí sản xuất kinh doanh dịch vụ dở dang
 - [x] S90-H: Bảng xác định chênh lệch thu, chi
 - [x] S101-H: Sổ theo dõi dự toán

@@ -38,6 +38,17 @@ Content-Type: application/json
 
 ###
 
+### S61-H: PDF mẫu sổ chi tiết chi phí
+POST {{TestReport_HostAddress}}/api/reports/s61h/render
+Content-Type: application/json
+
+{
+  "appearance": {
+    "title": { "fontSize": 14 },
+    "tableBody": { "fontSize": 7.5 }
+  }
+}
+
 ### S62-H: PDF mẫu sổ chi tiết chi phí SXKD dịch vụ dở dang
 POST {{TestReport_HostAddress}}/api/reports/s62h/render
 Content-Type: application/json

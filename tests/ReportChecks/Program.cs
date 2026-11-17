@@ -28,6 +28,12 @@ if (args.Contains("--s55h-only"))
     return;
 }
 
+if (args.Contains("--s61h-only"))
+{
+    S61HChecks.Run();
+    return;
+}
+
 if (args.Contains("--s62h-only"))
 {
     S62HChecks.Run();
@@ -174,6 +180,7 @@ Check(controller.Render("s11h", new() { Appearance = new() { Title = new() { Fon
 S12HChecks.Run();
 S55HChecks.Run();
 S62HChecks.Run();
+S61HChecks.Run();
 S90HChecks.Run();
 S101HChecks.Run();
 Console.WriteLine("All report checks passed.");

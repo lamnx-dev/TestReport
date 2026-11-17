@@ -23,6 +23,7 @@ public sealed class ReportsController(
             new { id = "s106h", name = "S106-H — Sổ theo dõi kinh phí hoạt động nghiệp vụ" },
             new { id = "s101h", name = "S101-H — Sổ theo dõi dự toán" },
             new { id = "s90h", name = "S90-H — Bảng xác định chênh lệch thu, chi" },
+            new { id = "s61h", name = "S61-H — Sổ chi tiết chi phí" },
             new { id = "s62h", name = "S62-H — Sổ chi tiết chi phí sản xuất kinh doanh dịch vụ dở dang" }
         },
         fonts = ReportAppearanceApplier.Fonts,
@@ -33,7 +34,7 @@ public sealed class ReportsController(
     [HttpPost("{reportId}/render")]
     public IActionResult Render(string reportId, [FromBody] ReportRenderRequest request)
     {
-        if (reportId is not ("s11h" or "s12h" or "s55h" or "s106h" or "s90h" or "s62h" or "s101h"))
+        if (reportId is not ("s11h" or "s12h" or "s55h" or "s106h" or "s90h" or "s61h" or "s62h" or "s101h"))
             return NotFound(new { message = "Không tìm thấy báo cáo." });
         try { ReportAppearanceApplier.Validate(request.Appearance); }
         catch (ArgumentException ex) { return BadRequest(new { message = ex.Message }); }
