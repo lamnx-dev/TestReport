@@ -31,5 +31,5 @@
 - [ ] S61-H: Sổ chi tiết chi phí
 - [x] S62-H: Sổ chi tiết chi phí sản xuất kinh doanh dịch vụ dở dang
 - [x] S90-H: Bảng xác định chênh lệch thu, chi
-- [ ] S101-H: Sổ theo dõi dự toán
+- [x] S101-H: Sổ theo dõi dự toán
 - [x] S106-H: Sổ theo dõi kinh phí hoạt động nghiệp vụ

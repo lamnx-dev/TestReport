@@ -103,6 +103,19 @@ with sync_playwright() as p:
     download.value.save_as(str(output / "S90H.pdf"))
     page.screenshot(path=str(output / "s90h-preview.png"), full_page=True)
 
+    page.locator("#report").select_option("s101h")
+    expect(page.locator("iframe")).to_have_count(0)
+    page.locator("#title-size").fill("16")
+    with page.expect_response("**/api/reports/s101h/render", timeout=60000) as pending:
+        page.get_by_role("button", name="Tạo báo cáo", exact=True).click()
+    check(pending.value.status == 200 and pending.value.body().startswith(b"%PDF-"), "S101H styled PDF response")
+    expect(page.get_by_role("button", name="Tải PDF", exact=True)).to_be_enabled(timeout=60000)
+    with page.expect_download() as download:
+        page.get_by_role("button", name="Tải PDF", exact=True).click()
+    check(download.value.suggested_filename == "S101H.pdf", "S101H download filename")
+    download.value.save_as(str(output / "S101H.pdf"))
+    page.screenshot(path=str(output / "s101h-preview.png"), full_page=True)
+
     # Delayed response, then switch reports: Angular must abort the request.
     held = []
     page.route("**/api/reports/*/render", lambda route: held.append(route))

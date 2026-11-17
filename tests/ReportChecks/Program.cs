@@ -10,6 +10,12 @@ using TestReport.Api.Controllers;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging.Abstractions;
 
+if (args.Contains("--s101h-only"))
+{
+    S101HChecks.Run();
+    return;
+}
+
 if (args.Contains("--s12h-only"))
 {
     S12HChecks.Run();
@@ -169,4 +175,5 @@ S12HChecks.Run();
 S55HChecks.Run();
 S62HChecks.Run();
 S90HChecks.Run();
+S101HChecks.Run();
 Console.WriteLine("All report checks passed.");
