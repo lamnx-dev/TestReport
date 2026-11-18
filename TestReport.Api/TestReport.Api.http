@@ -1,5 +1,52 @@
 @TestReport_HostAddress = http://localhost:5168
 
+### S31-H: PDF mẫu sổ chi tiết phải thu kinh phí được cấp
+POST {{TestReport_HostAddress}}/api/reports/s31h/render
+Content-Type: application/json
+
+{ "appearance": { "title": { "fontSize": 14 }, "tableBody": { "fontSize": 9 } } }
+
+### S32-H: PDF mẫu sổ theo dõi chi phí trả trước
+POST {{TestReport_HostAddress}}/api/reports/s32h/render
+Content-Type: application/json
+
+{ "appearance": { "title": { "fontSize": 14 }, "tableBody": { "fontSize": 9 } } }
+
+### S33-H: PDF mẫu sổ chi tiết phải thu, phải trả nội bộ
+POST {{TestReport_HostAddress}}/api/reports/s33h/render
+Content-Type: application/json
+
+{ "appearance": { "title": { "fontSize": 14 }, "tableBody": { "fontSize": 9 } } }
+
+### S34-H: PDF mẫu sổ chi tiết thanh toán với khách hàng
+POST {{TestReport_HostAddress}}/api/reports/s34h/render
+Content-Type: application/json
+
+{ "appearance": { "title": { "fontSize": 14 }, "tableBody": { "fontSize": 9 } } }
+
+### S36-H: PDF mẫu sổ chi tiết tài sản thừa chờ xử lý
+POST {{TestReport_HostAddress}}/api/reports/s36h/render
+Content-Type: application/json
+
+{ "appearance": { "title": { "fontSize": 14 }, "tableBody": { "fontSize": 9 } } }
+
+### S37-H: PDF mẫu sổ chi tiết tài sản thiếu chờ xử lý
+POST {{TestReport_HostAddress}}/api/reports/s37h/render
+Content-Type: application/json
+
+{ "appearance": { "title": { "fontSize": 14 }, "tableBody": { "fontSize": 9 } } }
+
+### S11b-H: PDF mẫu sổ quỹ tiền mặt
+POST {{TestReport_HostAddress}}/api/reports/s11bh/render
+Content-Type: application/json
+
+{
+  "appearance": {
+    "title": { "fontSize": 14 },
+    "tableBody": { "fontSize": 9 }
+  }
+}
+
 ### S12-H: PDF mẫu sổ tiền gửi ngân hàng, kho bạc
 POST {{TestReport_HostAddress}}/api/reports/s12h/render
 Content-Type: application/json
@@ -59,3 +106,33 @@ Content-Type: application/json
     "tableBody": { "fontSize": 9 }
   }
 }
+
+### S38-H: PDF mẫu sổ chi tiết các tài khoản
+POST {{TestReport_HostAddress}}/api/reports/s38h/render
+Content-Type: application/json
+
+{ "appearance": { "title": { "fontSize": 14 }, "tableBody": { "fontSize": 9 } } }
+
+### S51-H: PDF mẫu sổ chi tiết doanh thu
+POST {{TestReport_HostAddress}}/api/reports/s51h/render
+Content-Type: application/json
+
+{ "appearance": { "title": { "fontSize": 14 }, "tableBody": { "fontSize": 9 } } }
+
+### S52-H: PDF mẫu sổ chi tiết doanh thu sản xuất, kinh doanh, dịch vụ
+POST {{TestReport_HostAddress}}/api/reports/s52h/render
+Content-Type: application/json
+
+{ "appearance": { "title": { "fontSize": 14 }, "tableBody": { "fontSize": 9 } } }
+
+### S53-H: PDF mẫu sổ theo dõi thuế GTGT
+POST {{TestReport_HostAddress}}/api/reports/s53h/render
+Content-Type: application/json
+
+{ "appearance": { "title": { "fontSize": 14 }, "tableBody": { "fontSize": 9 } } }
+
+### S54-H: PDF mẫu sổ theo dõi thuế GTGT được hoàn lại
+POST {{TestReport_HostAddress}}/api/reports/s54h/render
+Content-Type: application/json
+
+{ "appearance": { "title": { "fontSize": 14 }, "tableBody": { "fontSize": 9 } } }

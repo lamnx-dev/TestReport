@@ -12,6 +12,15 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Compile Update="Infrastructure\Reports\S11bHReport.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Update="Infrastructure\Reports\S11bHReport.Designer.cs">
+      <DependentUpon>S11bHReport.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Update="Infrastructure\Reports\S11bHReport.resx">
+      <DependentUpon>S11bHReport.cs</DependentUpon>
+    </EmbeddedResource>
     <Compile Update="Infrastructure\Reports\S11HReport.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -47,6 +56,105 @@
     </Compile>
     <EmbeddedResource Update="Infrastructure\Reports\S62HReport.resx">
       <DependentUpon>S62HReport.cs</DependentUpon>
+    </EmbeddedResource>
+    <Compile Update="Infrastructure\Reports\S31HReport.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Update="Infrastructure\Reports\S31HReport.Designer.cs">
+      <DependentUpon>S31HReport.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Update="Infrastructure\Reports\S31HReport.resx">
+      <DependentUpon>S31HReport.cs</DependentUpon>
+    </EmbeddedResource>
+    <Compile Update="Infrastructure\Reports\S32HReport.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Update="Infrastructure\Reports\S32HReport.Designer.cs">
+      <DependentUpon>S32HReport.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Update="Infrastructure\Reports\S32HReport.resx">
+      <DependentUpon>S32HReport.cs</DependentUpon>
+    </EmbeddedResource>
+    <Compile Update="Infrastructure\Reports\S33HReport.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Update="Infrastructure\Reports\S33HReport.Designer.cs">
+      <DependentUpon>S33HReport.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Update="Infrastructure\Reports\S33HReport.resx">
+      <DependentUpon>S33HReport.cs</DependentUpon>
+    </EmbeddedResource>
+    <Compile Update="Infrastructure\Reports\S34HReport.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Update="Infrastructure\Reports\S34HReport.Designer.cs">
+      <DependentUpon>S34HReport.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Update="Infrastructure\Reports\S34HReport.resx">
+      <DependentUpon>S34HReport.cs</DependentUpon>
+    </EmbeddedResource>
+    <Compile Update="Infrastructure\Reports\S36HReport.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Update="Infrastructure\Reports\S36HReport.Designer.cs">
+      <DependentUpon>S36HReport.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Update="Infrastructure\Reports\S36HReport.resx">
+      <DependentUpon>S36HReport.cs</DependentUpon>
+    </EmbeddedResource>
+    <Compile Update="Infrastructure\Reports\S37HReport.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Update="Infrastructure\Reports\S37HReport.Designer.cs">
+      <DependentUpon>S37HReport.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Update="Infrastructure\Reports\S37HReport.resx">
+      <DependentUpon>S37HReport.cs</DependentUpon>
+    </EmbeddedResource>
+    <Compile Update="Infrastructure\Reports\S38HReport.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Update="Infrastructure\Reports\S38HReport.Designer.cs">
+      <DependentUpon>S38HReport.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Update="Infrastructure\Reports\S38HReport.resx">
+      <DependentUpon>S38HReport.cs</DependentUpon>
+    </EmbeddedResource>
+    <Compile Update="Infrastructure\Reports\S51HReport.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Update="Infrastructure\Reports\S51HReport.Designer.cs">
+      <DependentUpon>S51HReport.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Update="Infrastructure\Reports\S51HReport.resx">
+      <DependentUpon>S51HReport.cs</DependentUpon>
+    </EmbeddedResource>
+    <Compile Update="Infrastructure\Reports\S52HReport.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Update="Infrastructure\Reports\S52HReport.Designer.cs">
+      <DependentUpon>S52HReport.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Update="Infrastructure\Reports\S52HReport.resx">
+      <DependentUpon>S52HReport.cs</DependentUpon>
+    </EmbeddedResource>
+    <Compile Update="Infrastructure\Reports\S53HReport.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Update="Infrastructure\Reports\S53HReport.Designer.cs">
+      <DependentUpon>S53HReport.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Update="Infrastructure\Reports\S53HReport.resx">
+      <DependentUpon>S53HReport.cs</DependentUpon>
+    </EmbeddedResource>
+    <Compile Update="Infrastructure\Reports\S54HReport.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Update="Infrastructure\Reports\S54HReport.Designer.cs">
+      <DependentUpon>S54HReport.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Update="Infrastructure\Reports\S54HReport.resx">
+      <DependentUpon>S54HReport.cs</DependentUpon>
     </EmbeddedResource>
     <Compile Update="Infrastructure\Reports\S55HReport.cs">
       <SubType>Component</SubType>

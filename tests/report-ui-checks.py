@@ -116,6 +116,111 @@ with sync_playwright() as p:
     download.value.save_as(str(output / "S101H.pdf"))
     page.screenshot(path=str(output / "s101h-preview.png"), full_page=True)
 
+    page.locator("#report").select_option("s53h")
+    expect(page.locator("iframe")).to_have_count(0)
+    page.locator("#title-size").fill("16")
+    page.locator("#tableBody-bold").select_option(label="Không")
+    with page.expect_response("**/api/reports/s53h/render", timeout=60000) as pending:
+        page.get_by_role("button", name="Tạo báo cáo", exact=True).click()
+    check(pending.value.status == 200 and pending.value.body().startswith(b"%PDF-"), "S53H styled PDF response")
+    expect(page.get_by_role("button", name="Tải PDF", exact=True)).to_be_enabled(timeout=60000)
+    with page.expect_download() as download:
+        page.get_by_role("button", name="Tải PDF", exact=True).click()
+    check(download.value.suggested_filename == "S53H.pdf", "S53H download filename")
+    download.value.save_as(str(output / "S53H.pdf"))
+    page.screenshot(path=str(output / "s53h-preview.png"), full_page=True)
+
+    page.locator("#report").select_option("s52h")
+    expect(page.locator("iframe")).to_have_count(0)
+    page.locator("#title-size").fill("16")
+    with page.expect_response("**/api/reports/s52h/render", timeout=60000) as pending:
+        page.get_by_role("button", name="Tạo báo cáo", exact=True).click()
+    check(pending.value.status == 200 and pending.value.body().startswith(b"%PDF-"), "S52H styled PDF response")
+    expect(page.get_by_role("button", name="Tải PDF", exact=True)).to_be_enabled(timeout=60000)
+    with page.expect_download() as download:
+        page.get_by_role("button", name="Tải PDF", exact=True).click()
+    check(download.value.suggested_filename == "S52H.pdf", "S52H download filename")
+    download.value.save_as(str(output / "S52H.pdf"))
+    page.screenshot(path=str(output / "s52h-preview.png"), full_page=True)
+
+    page.locator("#report").select_option("s37h")
+    expect(page.locator("iframe")).to_have_count(0)
+    page.locator("#title-size").fill("16")
+    with page.expect_response("**/api/reports/s37h/render", timeout=60000) as pending:
+        page.get_by_role("button", name="Tạo báo cáo", exact=True).click()
+    check(pending.value.status == 200 and pending.value.body().startswith(b"%PDF-"), "S37H styled PDF response")
+    expect(page.get_by_role("button", name="Tải PDF", exact=True)).to_be_enabled(timeout=60000)
+    with page.expect_download() as download:
+        page.get_by_role("button", name="Tải PDF", exact=True).click()
+    check(download.value.suggested_filename == "S37H.pdf", "S37H download filename")
+    download.value.save_as(str(output / "S37H.pdf"))
+    page.screenshot(path=str(output / "s37h-preview.png"), full_page=True)
+
+    page.locator("#report").select_option("s36h")
+    expect(page.locator("iframe")).to_have_count(0)
+    page.locator("#title-size").fill("16")
+    with page.expect_response("**/api/reports/s36h/render", timeout=60000) as pending:
+        page.get_by_role("button", name="Tạo báo cáo", exact=True).click()
+    check(pending.value.status == 200 and pending.value.body().startswith(b"%PDF-"), "S36H styled PDF response")
+    expect(page.get_by_role("button", name="Tải PDF", exact=True)).to_be_enabled(timeout=60000)
+    with page.expect_download() as download:
+        page.get_by_role("button", name="Tải PDF", exact=True).click()
+    check(download.value.suggested_filename == "S36H.pdf", "S36H download filename")
+    download.value.save_as(str(output / "S36H.pdf"))
+    page.screenshot(path=str(output / "s36h-preview.png"), full_page=True)
+
+    page.locator("#report").select_option("s34h")
+    expect(page.locator("iframe")).to_have_count(0)
+    page.locator("#title-size").fill("16")
+    with page.expect_response("**/api/reports/s34h/render", timeout=60000) as pending:
+        page.get_by_role("button", name="Tạo báo cáo", exact=True).click()
+    check(pending.value.status == 200 and pending.value.body().startswith(b"%PDF-"), "S34H styled PDF response")
+    expect(page.get_by_role("button", name="Tải PDF", exact=True)).to_be_enabled(timeout=60000)
+    with page.expect_download() as download:
+        page.get_by_role("button", name="Tải PDF", exact=True).click()
+    check(download.value.suggested_filename == "S34H.pdf", "S34H download filename")
+    download.value.save_as(str(output / "S34H.pdf"))
+    page.screenshot(path=str(output / "s34h-preview.png"), full_page=True)
+
+    page.locator("#report").select_option("s33h")
+    expect(page.locator("iframe")).to_have_count(0)
+    page.locator("#title-size").fill("16")
+    with page.expect_response("**/api/reports/s33h/render", timeout=60000) as pending:
+        page.get_by_role("button", name="Tạo báo cáo", exact=True).click()
+    check(pending.value.status == 200 and pending.value.body().startswith(b"%PDF-"), "S33H styled PDF response")
+    expect(page.get_by_role("button", name="Tải PDF", exact=True)).to_be_enabled(timeout=60000)
+    with page.expect_download() as download:
+        page.get_by_role("button", name="Tải PDF", exact=True).click()
+    check(download.value.suggested_filename == "S33H.pdf", "S33H download filename")
+    download.value.save_as(str(output / "S33H.pdf"))
+    page.screenshot(path=str(output / "s33h-preview.png"), full_page=True)
+
+    page.locator("#report").select_option("s32h")
+    expect(page.locator("iframe")).to_have_count(0)
+    page.locator("#title-size").fill("16")
+    with page.expect_response("**/api/reports/s32h/render", timeout=60000) as pending:
+        page.get_by_role("button", name="Tạo báo cáo", exact=True).click()
+    check(pending.value.status == 200 and pending.value.body().startswith(b"%PDF-"), "S32H styled PDF response")
+    expect(page.get_by_role("button", name="Tải PDF", exact=True)).to_be_enabled(timeout=60000)
+    with page.expect_download() as download:
+        page.get_by_role("button", name="Tải PDF", exact=True).click()
+    check(download.value.suggested_filename == "S32H.pdf", "S32H download filename")
+    download.value.save_as(str(output / "S32H.pdf"))
+    page.screenshot(path=str(output / "s32h-preview.png"), full_page=True)
+
+    page.locator("#report").select_option("s31h")
+    expect(page.locator("iframe")).to_have_count(0)
+    page.locator("#title-size").fill("16")
+    with page.expect_response("**/api/reports/s31h/render", timeout=60000) as pending:
+        page.get_by_role("button", name="Tạo báo cáo", exact=True).click()
+    check(pending.value.status == 200 and pending.value.body().startswith(b"%PDF-"), "S31H styled PDF response")
+    expect(page.get_by_role("button", name="Tải PDF", exact=True)).to_be_enabled(timeout=60000)
+    with page.expect_download() as download:
+        page.get_by_role("button", name="Tải PDF", exact=True).click()
+    check(download.value.suggested_filename == "S31H.pdf", "S31H download filename")
+    download.value.save_as(str(output / "S31H.pdf"))
+    page.screenshot(path=str(output / "s31h-preview.png"), full_page=True)
+
     # Delayed response, then switch reports: Angular must abort the request.
     held = []
     page.route("**/api/reports/*/render", lambda route: held.append(route))
